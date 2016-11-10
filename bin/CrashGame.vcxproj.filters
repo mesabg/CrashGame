@@ -13,6 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{28df0dcd-2977-4d6a-8991-724860720fa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Vert">
+      <UniqueIdentifier>{2652648c-12a2-40d4-9c93-278369a88901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Frag">
+      <UniqueIdentifier>{a9754f7b-64e7-4c74-ab70-94e1413e98ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Models">
+      <UniqueIdentifier>{45074ba2-7de0-41b1-8ecb-83eccde75c3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Models\OBJ">
+      <UniqueIdentifier>{ee4bfa7f-c403-4194-995d-6ef678d7b866}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Models\MD2">
+      <UniqueIdentifier>{38780021-c980-43ed-8ee6-b404e240c425}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\cpp\BoundingBox.cpp">
@@ -113,5 +131,30 @@
     <ClInclude Include="..\src\headers\Vertex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\shaders\Flat.frag">
+      <Filter>Shaders\Frag</Filter>
+    </None>
+    <None Include="..\src\shaders\Gouraud.frag">
+      <Filter>Shaders\Frag</Filter>
+    </None>
+    <None Include="..\src\shaders\Phong.frag">
+      <Filter>Shaders\Frag</Filter>
+    </None>
+    <None Include="..\src\shaders\Flat.vert">
+      <Filter>Shaders\Vert</Filter>
+    </None>
+    <None Include="..\src\shaders\Gouraud.vert">
+      <Filter>Shaders\Vert</Filter>
+    </None>
+    <None Include="..\src\shaders\Phong.vert">
+      <Filter>Shaders\Vert</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="..\models\obj\Crash\Principal\crash.obj">
+      <Filter>Resource Files\Models\OBJ</Filter>
+    </Object>
   </ItemGroup>
 </Project>
