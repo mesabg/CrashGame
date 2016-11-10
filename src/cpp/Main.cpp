@@ -12,6 +12,7 @@ int main() {
 	mediator->LoadDefaultModels(defaultModelsSrc);
 	localInterface->infinity();
 	localInterface->finish();
+	// Hola a todoooos
 }
 
 
