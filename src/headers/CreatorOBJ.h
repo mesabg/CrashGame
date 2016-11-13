@@ -10,7 +10,7 @@ class CreatorOBJ : public ModelsCreator
 public:
 	CreatorOBJ();
 	~CreatorOBJ();
-	Model* factoryMethod(Mediator* mediator);
+	Model* factoryMethod();
 };
 
 #endif

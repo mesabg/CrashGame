@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BoundingBox" Collapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAEgAAAAAQACCAAABIAAAAAaECACCAAAAAggAIAEA=</HashCode>
+      <FileName>C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\headers\BoundingBox.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConcreteMediator" Collapsed="true">
+    <Position X="5.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAADAAAEkEAAAIIUAAhAAQgACEAgAAACAAEiAIABA=</HashCode>
+      <FileName>C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\headers\ConcreteMediator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CreatorOBJ" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAQAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\headers\CreatorOBJ.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CreatorOFF" Collapsed="true">
+    <Position X="2.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAQAA=</HashCode>
+      <FileName>C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\headers\CreatorOFF.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FileLoader" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAEACAgAAAABAQAAAAAAQAAA=</HashCode>
+      <FileName>C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\headers\FileLoader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CGLSLProgram" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgIAAACAAAAgaAAMAAAAAQAAAAAABAAYAARIAQAgYkA=</HashCode>
+      <FileName>C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\headers\GLSLProgram.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Colleague" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAEAgAAAQAAAAAAhAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\headers\Mediator_Colleague.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mediator" Collapsed="true">
+    <Position X="5.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAEAAAIAEAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\headers\Mediator_Colleague.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model" Collapsed="true">
+    <Position X="4.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gZwbUIxAKgMBEfjRGBJSUZQwGQkhACDLKRsTAnbXO+g=</HashCode>
+      <FileName>C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\headers\Model.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModelsCreator" Collapsed="true">
+    <Position X="1.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAgAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\headers\ModelsCreator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OBJ" Collapsed="true">
+    <Position X="3" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAACAAAAAAADAA=</HashCode>
+      <FileName>C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\headers\OBJ.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OFF" Collapsed="true">
+    <Position X="5.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAgAAAAAAAAAAAIAAAAAABAA=</HashCode>
+      <FileName>C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\headers\OFF.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RGB_" Collapsed="true">
+    <Position X="12.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAgAAAAAAAAAAAAQAAAAAAAAIAAI=</HashCode>
+      <FileName>C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\headers\RGB_.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SideBar" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CSgCAooQAAARIYBAAAZAABAwQQgSAOtQzJAcAEAWIGg=</HashCode>
+      <FileName>C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\headers\SideBar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UserInterface" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UBBQAABAAgAGAAABAADgBCAAAIGCREBASCIACSCAEAA=</HashCode>
+      <FileName>C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\headers\UserInterface.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vertex" Collapsed="true">
+    <Position X="14" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAQAAAAAAAAAABgAQAAAAA=</HashCode>
+      <FileName>C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\headers\Vertex.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

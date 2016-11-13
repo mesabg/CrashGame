@@ -13,7 +13,7 @@ class ModelsCreator
 public:
 	ModelsCreator();
 	~ModelsCreator();
-	virtual Model* factoryMethod(Mediator* mediator) = 0;
+	virtual Model* factoryMethod() = 0;
 };
 
 #endif

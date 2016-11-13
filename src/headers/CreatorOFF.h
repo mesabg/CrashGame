@@ -10,7 +10,7 @@ class CreatorOFF : public ModelsCreator
 public:
 	CreatorOFF();
 	~CreatorOFF();
-	Model* factoryMethod(Mediator* mediator);
+	Model* factoryMethod();
 };
 
 #endif

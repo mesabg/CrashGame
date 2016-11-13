@@ -7,7 +7,7 @@
 class OBJ : public Model
 {
 public:
-	OBJ(Mediator* mediator);
+	OBJ();
 	~OBJ();
 	void loadModel(string ruta);
 	void agregarFace(vector<int> Faces);

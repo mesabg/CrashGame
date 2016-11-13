@@ -1,7 +1,7 @@
 #include <OBJ.h>
 #include <iostream>
 
-OBJ::OBJ(Mediator* mediator) :Model(mediator) {}
+OBJ::OBJ() {}
 OBJ::~OBJ() {}
 
 using namespace std;

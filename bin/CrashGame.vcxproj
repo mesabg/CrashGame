@@ -122,39 +122,65 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\cpp\BoundingBox.cpp" />
-    <ClCompile Include="..\src\cpp\ConcreteMediator.cpp" />
+    <ClCompile Include="..\src\cpp\Camera.cpp" />
+    <ClCompile Include="..\src\cpp\ConcreteGameController.cpp" />
+    <ClCompile Include="..\src\cpp\ConcreteRenderController.cpp" />
+    <ClCompile Include="..\src\cpp\CreatorMD2.cpp" />
+    <ClCompile Include="..\src\cpp\CreatorMD5.cpp" />
     <ClCompile Include="..\src\cpp\CreatorOBJ.cpp" />
     <ClCompile Include="..\src\cpp\CreatorOFF.cpp" />
-    <ClCompile Include="..\src\cpp\FileLoader.cpp" />
-    <ClCompile Include="..\src\cpp\GLSLProgram.cpp" />
+    <ClCompile Include="..\src\cpp\Enemy.cpp" />
+    <ClCompile Include="..\src\cpp\CGLSLProgram.cpp" />
+    <ClCompile Include="..\src\cpp\GameInterface.cpp" />
+    <ClCompile Include="..\src\cpp\Light.cpp" />
     <ClCompile Include="..\src\cpp\Main.cpp" />
-    <ClCompile Include="..\src\cpp\Mediator_Colleague.cpp" />
+    <ClCompile Include="..\src\cpp\MD2.cpp" />
+    <ClCompile Include="..\src\cpp\MD5.cpp" />
     <ClCompile Include="..\src\cpp\Model.cpp" />
     <ClCompile Include="..\src\cpp\ModelsCreator.cpp" />
     <ClCompile Include="..\src\cpp\OBJ.cpp" />
+    <ClCompile Include="..\src\cpp\Object.cpp" />
     <ClCompile Include="..\src\cpp\OFF.cpp" />
-    <ClCompile Include="..\src\cpp\RGB_.cpp" />
-    <ClCompile Include="..\src\cpp\SideBar.cpp" />
-    <ClCompile Include="..\src\cpp\UserInterface.cpp" />
-    <ClCompile Include="..\src\cpp\Vertex.cpp" />
+    <ClCompile Include="..\src\cpp\Player.cpp" />
+    <ClCompile Include="..\src\cpp\Projection.cpp" />
+    <ClCompile Include="..\src\cpp\RenderInterface.cpp" />
+    <ClCompile Include="..\src\cpp\GUI.cpp" />
+    <ClCompile Include="..\src\cpp\SkyBox.cpp" />
+    <ClCompile Include="..\src\cpp\Sound.cpp" />
+    <ClCompile Include="..\src\cpp\Stage.cpp" />
+    <ClCompile Include="..\src\cpp\Texture.cpp" />
+    <ClCompile Include="..\src\cpp\Transformation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\headers\BoundingBox.h" />
-    <ClInclude Include="..\src\headers\ConcreteMediator.h" />
+    <ClInclude Include="..\src\headers\Camera.h" />
+    <ClInclude Include="..\src\headers\ConcreteGameController.h" />
+    <ClInclude Include="..\src\headers\ConcreteRenderController.h" />
+    <ClInclude Include="..\src\headers\CreatorMD2.h" />
+    <ClInclude Include="..\src\headers\CreatorMD5.h" />
     <ClInclude Include="..\src\headers\CreatorOBJ.h" />
     <ClInclude Include="..\src\headers\CreatorOFF.h" />
-    <ClInclude Include="..\src\headers\FileLoader.h" />
-    <ClInclude Include="..\src\headers\GLSLProgram.h" />
+    <ClInclude Include="..\src\headers\Enemy.h" />
+    <ClInclude Include="..\src\headers\CGLSLProgram.h" />
+    <ClInclude Include="..\src\headers\GameInterface.h" />
+    <ClInclude Include="..\src\headers\Light.h" />
     <ClInclude Include="..\src\headers\Main.h" />
-    <ClInclude Include="..\src\headers\Mediator_Colleague.h" />
+    <ClInclude Include="..\src\headers\MD2.h" />
+    <ClInclude Include="..\src\headers\MD5.h" />
     <ClInclude Include="..\src\headers\Model.h" />
     <ClInclude Include="..\src\headers\ModelsCreator.h" />
     <ClInclude Include="..\src\headers\OBJ.h" />
+    <ClInclude Include="..\src\headers\Object.h" />
     <ClInclude Include="..\src\headers\OFF.h" />
-    <ClInclude Include="..\src\headers\RGB_.h" />
-    <ClInclude Include="..\src\headers\SideBar.h" />
-    <ClInclude Include="..\src\headers\UserInterface.h" />
-    <ClInclude Include="..\src\headers\Vertex.h" />
+    <ClInclude Include="..\src\headers\Player.h" />
+    <ClInclude Include="..\src\headers\Projection.h" />
+    <ClInclude Include="..\src\headers\RenderInterface.h" />
+    <ClInclude Include="..\src\headers\GUI.h" />
+    <ClInclude Include="..\src\headers\SkyBox.h" />
+    <ClInclude Include="..\src\headers\Sound.h" />
+    <ClInclude Include="..\src\headers\Stage.h" />
+    <ClInclude Include="..\src\headers\Texture.h" />
+    <ClInclude Include="..\src\headers\Transformation.h" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System">
@@ -174,6 +200,7 @@
     <None Include="..\src\shaders\Gouraud.vert" />
     <None Include="..\src\shaders\Phong.frag" />
     <None Include="..\src\shaders\Phong.vert" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="..\models\obj\Crash\Principal\crash.obj" />

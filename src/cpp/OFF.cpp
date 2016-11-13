@@ -1,11 +1,7 @@
 #include <OFF.h>
 
-OFF::OFF(Mediator* mediator) :Model(mediator) {}
+OFF::OFF() {}
 OFF::~OFF() {}
-
-#include <iostream>
-using namespace std;
-
 
 void OFF::loadModel(string ruta) {
 	string archivo = ruta;

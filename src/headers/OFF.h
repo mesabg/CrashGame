@@ -7,7 +7,7 @@
 class OFF : public Model
 {
 public:
-	OFF(Mediator* mediator);
+	OFF();
 	~OFF();
 	void loadModel(string ruta);
 	void agregarFace(vector<int> Faces);

@@ -1,26 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Shaders">
-      <UniqueIdentifier>{28df0dcd-2977-4d6a-8991-724860720fa0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shaders\Vert">
-      <UniqueIdentifier>{2652648c-12a2-40d4-9c93-278369a88901}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shaders\Frag">
-      <UniqueIdentifier>{a9754f7b-64e7-4c74-ab70-94e1413e98ec}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resource Files\Models">
       <UniqueIdentifier>{45074ba2-7de0-41b1-8ecb-83eccde75c3d}</UniqueIdentifier>
@@ -31,125 +14,279 @@
     <Filter Include="Resource Files\Models\MD2">
       <UniqueIdentifier>{38780021-c980-43ed-8ee6-b404e240c425}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Render Interface">
+      <UniqueIdentifier>{abf26419-259f-4bd2-a01a-3bf3f971e07a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render Interface\Header Files">
+      <UniqueIdentifier>{2e5d5dac-f074-4122-b114-5e876a929922}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render Interface\Source Files">
+      <UniqueIdentifier>{9f85f010-e57e-4a7b-a693-d165ff219583}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Interface">
+      <UniqueIdentifier>{167b604a-4830-40e0-94b3-a4166c5c1503}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main Objects">
+      <UniqueIdentifier>{a03424cb-db01-456b-a69b-ee5bb5f0cb56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Secondary Objects">
+      <UniqueIdentifier>{87c41c52-bead-4c37-b23f-89dbb3e5ea41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main Objects\Header Files">
+      <UniqueIdentifier>{d2ac5736-afb8-4e47-b469-16912b40e84d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main Objects\Source Files">
+      <UniqueIdentifier>{0121fd1a-2648-448e-9449-69777c334293}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Secondary Objects\Header FIles">
+      <UniqueIdentifier>{b4b07945-dc7e-46cc-88ad-1fde979dd688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Secondary Objects\Source Files">
+      <UniqueIdentifier>{0a2317e4-6146-4ea3-a699-ea9f70576a32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Interface\Header Files">
+      <UniqueIdentifier>{03f152ee-b942-4df1-b88a-af3dfdecc3c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Interface\Source FIles">
+      <UniqueIdentifier>{f05d9814-a6fa-40ea-9adc-b9aa5cf6d1bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Init">
+      <UniqueIdentifier>{980ae988-14a1-4a11-a396-e71c4f582f27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shaders">
+      <UniqueIdentifier>{cdd8f013-8a40-41a8-9f2b-fc6006f817e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shaders\Fragment">
+      <UniqueIdentifier>{d12946f6-85f9-40c7-8cf5-799789497af4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shaders\Vertex">
+      <UniqueIdentifier>{9ac377ea-690c-48d4-84cb-fd0268d718d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main Objects\Header Files\Entity">
+      <UniqueIdentifier>{32c12d66-8709-497e-b558-d7b709fc0f48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main Objects\Source Files\Entity">
+      <UniqueIdentifier>{24836785-96ec-4ec1-8055-17055d4e078f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model">
+      <UniqueIdentifier>{eb53df87-8e99-45b8-83a3-3530cdcdeffd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Creator">
+      <UniqueIdentifier>{0c0e92b2-ab0c-4854-8662-7f82e5aa3d83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Concrete">
+      <UniqueIdentifier>{efda136f-6202-42fa-b73e-911c763149ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Creator\Header Files">
+      <UniqueIdentifier>{6b18280a-e3de-430e-b877-328a504c37aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Creator\Source Files">
+      <UniqueIdentifier>{b4d9af0c-f118-4964-b319-34aebfbd4023}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Concrete\Header Files">
+      <UniqueIdentifier>{b9ef616e-7391-46dd-826f-89aa932b938c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Model\Concrete\Source Files">
+      <UniqueIdentifier>{2818b371-6353-4ea7-ad3a-1eb4685fb456}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\cpp\BoundingBox.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\src\cpp\RenderInterface.cpp">
+      <Filter>Render Interface\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\cpp\ConcreteMediator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\cpp\CreatorOBJ.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\cpp\CreatorOFF.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\cpp\FileLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\cpp\GLSLProgram.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\src\cpp\ConcreteRenderController.cpp">
+      <Filter>Render Interface\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\cpp\Main.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Init</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\cpp\Mediator_Colleague.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\src\cpp\CGLSLProgram.cpp">
+      <Filter>Main Objects\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\cpp\Model.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\src\cpp\GUI.cpp">
+      <Filter>Main Objects\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\Stage.cpp">
+      <Filter>Main Objects\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\SkyBox.cpp">
+      <Filter>Main Objects\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\Sound.cpp">
+      <Filter>Secondary Objects\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\Light.cpp">
+      <Filter>Secondary Objects\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\Camera.cpp">
+      <Filter>Secondary Objects\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\Projection.cpp">
+      <Filter>Secondary Objects\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\BoundingBox.cpp">
+      <Filter>Secondary Objects\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\Transformation.cpp">
+      <Filter>Secondary Objects\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\Texture.cpp">
+      <Filter>Secondary Objects\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\Enemy.cpp">
+      <Filter>Main Objects\Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\GameInterface.cpp">
+      <Filter>Game Interface\Source FIles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\ConcreteGameController.cpp">
+      <Filter>Game Interface\Source FIles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\CreatorOBJ.cpp">
+      <Filter>Model\Creator\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\CreatorOFF.cpp">
+      <Filter>Model\Creator\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\cpp\ModelsCreator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Model\Creator\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\Model.cpp">
+      <Filter>Model\Concrete\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\cpp\OBJ.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Model\Concrete\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\cpp\OFF.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Model\Concrete\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\cpp\RGB_.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\src\cpp\Player.cpp">
+      <Filter>Main Objects\Source Files\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\cpp\SideBar.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\src\cpp\Object.cpp">
+      <Filter>Main Objects\Source Files\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\cpp\UserInterface.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\src\cpp\MD2.cpp">
+      <Filter>Model\Concrete\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\cpp\Vertex.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\src\cpp\MD5.cpp">
+      <Filter>Model\Concrete\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\CreatorMD2.cpp">
+      <Filter>Model\Creator\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\CreatorMD5.cpp">
+      <Filter>Model\Creator\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\headers\BoundingBox.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\src\headers\RenderInterface.h">
+      <Filter>Render Interface\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\headers\ConcreteMediator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\headers\CreatorOBJ.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\headers\CreatorOFF.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\headers\FileLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\headers\GLSLProgram.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\src\headers\ConcreteRenderController.h">
+      <Filter>Render Interface\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\headers\Main.h">
-      <Filter>Header Files</Filter>
+      <Filter>Init</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\headers\Mediator_Colleague.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\src\headers\CGLSLProgram.h">
+      <Filter>Main Objects\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\headers\Model.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\src\headers\GUI.h">
+      <Filter>Main Objects\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\Stage.h">
+      <Filter>Main Objects\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\SkyBox.h">
+      <Filter>Main Objects\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\Sound.h">
+      <Filter>Secondary Objects\Header FIles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\Light.h">
+      <Filter>Secondary Objects\Header FIles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\Camera.h">
+      <Filter>Secondary Objects\Header FIles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\Projection.h">
+      <Filter>Secondary Objects\Header FIles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\BoundingBox.h">
+      <Filter>Secondary Objects\Header FIles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\Transformation.h">
+      <Filter>Secondary Objects\Header FIles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\Texture.h">
+      <Filter>Secondary Objects\Header FIles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\GameInterface.h">
+      <Filter>Game Interface\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\Enemy.h">
+      <Filter>Main Objects\Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\ConcreteGameController.h">
+      <Filter>Game Interface\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\CreatorOBJ.h">
+      <Filter>Model\Creator\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\CreatorOFF.h">
+      <Filter>Model\Creator\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\headers\ModelsCreator.h">
-      <Filter>Header Files</Filter>
+      <Filter>Model\Creator\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\Model.h">
+      <Filter>Model\Concrete\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\headers\OBJ.h">
-      <Filter>Header Files</Filter>
+      <Filter>Model\Concrete\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\headers\OFF.h">
-      <Filter>Header Files</Filter>
+      <Filter>Model\Concrete\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\headers\RGB_.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\src\headers\Player.h">
+      <Filter>Main Objects\Header Files\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\headers\SideBar.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\src\headers\Object.h">
+      <Filter>Main Objects\Header Files\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\headers\UserInterface.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\src\headers\CreatorMD2.h">
+      <Filter>Model\Creator\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\headers\Vertex.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\src\headers\CreatorMD5.h">
+      <Filter>Model\Creator\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\MD2.h">
+      <Filter>Model\Concrete\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\headers\MD5.h">
+      <Filter>Model\Concrete\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="..\src\shaders\Flat.frag">
-      <Filter>Shaders\Frag</Filter>
+      <Filter>Resource Files\Shaders\Fragment</Filter>
     </None>
     <None Include="..\src\shaders\Gouraud.frag">
-      <Filter>Shaders\Frag</Filter>
+      <Filter>Resource Files\Shaders\Fragment</Filter>
     </None>
     <None Include="..\src\shaders\Phong.frag">
-      <Filter>Shaders\Frag</Filter>
+      <Filter>Resource Files\Shaders\Fragment</Filter>
     </None>
     <None Include="..\src\shaders\Flat.vert">
-      <Filter>Shaders\Vert</Filter>
+      <Filter>Resource Files\Shaders\Vertex</Filter>
     </None>
     <None Include="..\src\shaders\Gouraud.vert">
-      <Filter>Shaders\Vert</Filter>
+      <Filter>Resource Files\Shaders\Vertex</Filter>
     </None>
     <None Include="..\src\shaders\Phong.vert">
-      <Filter>Shaders\Vert</Filter>
+      <Filter>Resource Files\Shaders\Vertex</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

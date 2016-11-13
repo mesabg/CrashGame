@@ -4,6 +4,6 @@ CreatorOFF::CreatorOFF() {}
 
 CreatorOFF::~CreatorOFF() {}
 
-Model* CreatorOFF::factoryMethod(Mediator* mediator) {
-	return new OFF(mediator);
+Model* CreatorOFF::factoryMethod() {
+	return new OFF();
 }

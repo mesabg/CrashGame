@@ -2,10 +2,23 @@
 #ifndef __MODEL_H_
 #define __MODEL_H_
 
-#include <Mediator_Colleague.h>
+#include <Transformation.h>
+#include <Sound.h>
+#include <BoundingBox.h>
+#include <Texture.h>
+#include <string>
 
-class Model : public Colleague{
+using std::string;
+
+class Model{
 protected:
+	GLfloat *glVBO;
+	Sound* sound;
+	Transformation* transformation;
+	BoundingBox* boundingBox;
+	Texture* texture;
+
+
 	vector<Vertex*> vertexes;
 	GLfloat *glVertexes;
 	GLfloat *glNormals;
@@ -20,7 +33,7 @@ protected:
 	float speculateIntensity, diffuseIntensity;
 	bool shadingMode;
 	int mode;
-	BoundingBox* localBoundingBox;
+	
 	bool displayBoundingBox, displayBackfaceCulling, displayNormal;
 	RGB_ borderColor, boundingBoxColor, fillColor, normalsColor;
 	RGB_ lightAmbientIntensity, lightDiffuseIntensity, lightSpecularIntensity;
@@ -36,7 +49,7 @@ protected:
 	glm::mat4 modelView;
 	glm::mat4 normalMatrix;
 public:
-	Model(Mediator* mediator);
+	Model();
 	~Model();
 	virtual void loadModel(string message) = 0;
 	void display(bool glDepth, CGLSLProgram* shadingProgram, GLfloat* lightSourceGLvector, glm::vec3 luzCentro, bool glNormalVertexTypeFlag);
