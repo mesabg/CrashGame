@@ -1,12 +1,21 @@
-#include <GLSLProgram.h>
+#include <CGLSLProgram.h>
 #include <iostream>
 #include <fstream>
 #include <algorithm>
-#include "..\headers\CGLSLProgram.h"
 
 using namespace std;
 
-CGLSLProgram::CGLSLProgram(void)
+
+CGLSLProgram::CGLSLProgram(RenderController * renderController):RenderColleague(renderController){
+	m_vIdShader[FRAGMENT] = 0;
+	m_vIdShader[GEOMETRY] = 0;
+	m_vIdShader[TESSELATION] = 0;
+	m_mapVarShader.clear();
+	m_mapSubroutines.clear();
+}
+
+
+CGLSLProgram::CGLSLProgram()
 {
 	m_vIdShader[VERTEX] = 0;
 	m_vIdShader[FRAGMENT] = 0;
@@ -17,7 +26,7 @@ CGLSLProgram::CGLSLProgram(void)
 }
 
 
-CGLSLProgram::~CGLSLProgram(void)
+CGLSLProgram::~CGLSLProgram()
 {
 	m_mapVarShader.clear();
 	m_mapSubroutines.clear();

@@ -4,6 +4,6 @@ CreatorOBJ::CreatorOBJ() {}
 
 CreatorOBJ::~CreatorOBJ() {}
 
-Model* CreatorOBJ::factoryMethod() {
-	return new OBJ();
+Model* CreatorOBJ::create(string path) {
+	return new OBJ(path);
 }

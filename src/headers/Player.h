@@ -9,16 +9,17 @@ extern int amountOfPlayers;
 class Player : public Entity {
 private:
 	/*Multiple Singleton*/
-	static Player** uniquePlayers;
+	static vector<Player*> uniquePlayers;
 
 	/*Variables*/
+	GameController* gameController;
 
 	/*Functions*/
-	Player();
+	Player(GameController * gameController, string path);
 	~Player();
 public:
 	/*Get Instance*/
-	static Player* Instance(GameController* gameController, const int index);
+	static Player* Instance(GameController* gameController, string path, const int index);
 	static void Destroy();
 
 	/*Get message*/

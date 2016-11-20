@@ -5,12 +5,11 @@
 #include <OBJ.h>
 
 /*Concrete Creator*/
-class CreatorOBJ : public ModelsCreator
-{
+class CreatorOBJ : public ModelsCreator{
 public:
 	CreatorOBJ();
 	~CreatorOBJ();
-	Model* factoryMethod();
+	Model* create(string path);
 };
 
 #endif

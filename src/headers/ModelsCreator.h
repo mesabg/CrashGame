@@ -13,7 +13,7 @@ class ModelsCreator
 public:
 	ModelsCreator();
 	~ModelsCreator();
-	virtual Model* factoryMethod() = 0;
+	virtual Model* create(string path) = 0;
 };
 
 #endif

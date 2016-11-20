@@ -6,6 +6,9 @@
 #include <Stage.h>
 #include <GUI.h>
 #include <CGLSLProgram.h>
+#include <vector>
+
+using std::vector;
 
 class ConcreteRenderController : public RenderController
 {

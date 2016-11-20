@@ -8,7 +8,11 @@
 #include <Light.h>
 #include <Camera.h>
 #include <Projection.h>
-#include <GameInterface.h>
+#include <Player.h>
+#include <Enemy.h>
+#include <Object.h>
+
+extern int amountOfEnemies, amountOfPlayers, amountOfObjects;
 
 class Stage : public RenderColleague
 {
@@ -22,7 +26,7 @@ private:
 	Light* light;
 	Camera* camera;
 	Projection* projection;
-	Entity** entitys;
+	vector<Entity*> entities;
 
 	/*Functions*/
 	Stage(RenderController* renderController);

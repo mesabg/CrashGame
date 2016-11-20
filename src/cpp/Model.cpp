@@ -1,6 +1,6 @@
 #include <Model.h>
 #include <iostream>
-
+/*
 Model::Model(Mediator* mediator) :Colleague(mediator) {
 	this->T = glm::mat4(1.0f);
 	this->R = glm::mat4(1.0f);
@@ -49,10 +49,23 @@ Model::Model(Mediator* mediator) :Colleague(mediator) {
 	this->projection = glm::perspective(44.766655555f, 1440.0f / 900.0f, 1.0f, 1000.0f);// Hay que settearlos por el valor real !! reshape y todo el rollo NO CAMBIAR ESA CONSTANTE
 	this->modelView = glm::lookAt(glm::vec3(3.0f, 3.0f, 10.0f) , glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 	this->normalMatrix = glm::transpose(glm::inverse(this->TInverse*this->R*this->S));
+}*/
+
+Model::Model(){
 }
 
 Model::~Model() {}
 
+
+void Model::Inherit(Model * model) {
+	/*Copy All the values*/
+	this->glVBO = model->getGLVBO();
+	this->sound = model->getSound();
+	this->transformation = model->getTransformation();
+	this->texture = model->getTexture();
+	this->boundingBox = model->getBoundingBox();
+}
+/*
 void Model::display(bool glDepth, CGLSLProgram* shadingProgram, GLfloat* lightSourceGLvector, glm::vec3 luzCentro, bool glNormalVertexTypeFlag){
 	glm::tmat4x4<GLdouble> transform = this->getTransform();
 	glm::tvec4<GLdouble> pivote;
@@ -61,7 +74,7 @@ void Model::display(bool glDepth, CGLSLProgram* shadingProgram, GLfloat* lightSo
 	if(glDepth) glEnable(GL_DEPTH_TEST);
 	else glDisable(GL_DEPTH_TEST);
 
-	/*Backface Culling*/
+
 	if (this->displayBackfaceCulling) {	
 	    glEnable(GL_NORMALIZE);
 		glEnable(GL_CULL_FACE);
@@ -71,11 +84,10 @@ void Model::display(bool glDepth, CGLSLProgram* shadingProgram, GLfloat* lightSo
 		glDisable(GL_CULL_FACE);
 	}
 	//printf("%f \n", this->matShininess);
-	/*Display mode*/
+
 	if (this->mode == 0) { type = GL_POINTS; }
 	else if (this->mode == 1 || this->mode == 2) { type = GL_TRIANGLES; }
 
-	/*Active Shading*/
 	vector<GLuint> ID;
 	if (shadingProgram!=NULL && !this->shadingMode) {
 		//this->displayBoundingBox = false;
@@ -138,36 +150,24 @@ void Model::display(bool glDepth, CGLSLProgram* shadingProgram, GLfloat* lightSo
 			this->localBoundingBox->display(this->TInverse, this->T, this->R, this->S);
 	}
 	
-	/*Display Bounding Box*/
-	/*if (this->displayBoundingBox)
-		this->localBoundingBox->display(this->TInverse, this->T, this->R, this->S);*/
 
-	/*Display*/	
 	for (int i = 0; i < (int)this->faces.size(); i++) {
-		/*Fill Case*/
 		if (this->mode == 2) {
 			glPolygonMode(GL_FRONT, GL_FILL);
-			/*Fill Color*/
 			glColor3fv(this->fillColor.rgb);
 
 			glBegin(type);
-			/*Primer Vector*/
 			if (!glNormalVertexTypeFlag) 
 				pivote = transformVector(transform, this->normalFaces[i]);
 			else 
 				pivote = transformVector(transform, this->normalVertexes[(int)this->faces[i]->x - 1]);
-				//glNormal3d(this->normalVertexes[(int)this->faces[i]->x - 1]->x, this->normalVertexes[(int)this->faces[i]->x - 1]->y, this->normalVertexes[(int)this->faces[i]->x - 1]->z);
 			
 			glNormal3d(pivote[0], pivote[1], pivote[2]);
 			pivote = transformVector(transform, this->vertexes[(int)this->faces[i]->x - 1]);
 			glVertex3d(pivote[0], pivote[1], pivote[2]);
 			
 
-			/*Segundo Vector*/
-			/*if (!glNormalVertexTypeFlag)
-				glNormal3d(this->normalFaces[i]->x, this->normalFaces[i]->y, this->normalFaces[i]->z);
-			else
-				glNormal3d(this->normalVertexes[(int)this->faces[i]->y - 1]->x, this->normalVertexes[(int)this->faces[i]->y - 1]->y, this->normalVertexes[(int)this->faces[i]->y - 1]->z);*/
+		
 			if (!glNormalVertexTypeFlag)
 				pivote = transformVector(transform, this->normalFaces[i]);
 			else
@@ -176,7 +176,7 @@ void Model::display(bool glDepth, CGLSLProgram* shadingProgram, GLfloat* lightSo
 			pivote = transformVector(transform, this->vertexes[(int)this->faces[i]->y - 1]);
 			glVertex3d(pivote[0], pivote[1], pivote[2]);
 
-			/*Tercer Vector*/
+		
 			if (!glNormalVertexTypeFlag)
 				pivote = transformVector(transform, this->normalFaces[i]);
 			else
@@ -190,43 +190,42 @@ void Model::display(bool glDepth, CGLSLProgram* shadingProgram, GLfloat* lightSo
 			if (shadingProgram != NULL) continue;
 		}
 
-			/*Border*/
+	
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 			if (type == GL_POINTS)
 				glPointSize((GLfloat) 4.0f);
 
-			/*Border Color*/
+
 			glColor3fv(this->borderColor.rgb);
 
 			glBegin(type);
-			/*Primer Vector*/
+		
 			glNormal3d(this->normalFaces[i]->x, this->normalFaces[i]->y, this->normalFaces[i]->z);
 			pivote = transformVector(transform, this->vertexes[(int)this->faces[i]->x - 1]);
 			glVertex3d(pivote[0], pivote[1], pivote[2]);
 
-			/*Segundo Vector*/
+	
 
 			pivote = transformVector(transform, this->vertexes[(int)this->faces[i]->y - 1]);
 			glVertex3d(pivote[0], pivote[1], pivote[2]);
 
-			/*Tercer Vector*/
+
 			pivote = transformVector(transform, this->vertexes[(int)this->faces[i]->z - 1]);
 			glVertex3d(pivote[0], pivote[1], pivote[2]);
 			glEnd();
 		
 	}
 
-	/*Disable shading program*/
+
 	if (shadingProgram != NULL && !this->shadingMode)
 		shadingProgram->disable();
 
-	/*Disable back face culling*/
+
 	if (this->displayBackfaceCulling) {
 		glDisable(GL_NORMALIZE);
 		glDisable(GL_CULL_FACE);
 	}
 
-	/*Display Normal*/
 	if (this->displayNormal) {
 		glBegin(GL_LINES);
 		Vertex* Aux = new Vertex();
@@ -287,35 +286,31 @@ void Model::setRotation(float *quaternion){
 	for (int i = 0; i < 4; i++)
 		this->Rotation[i] = quaternion[i];
 
-	/*First Row*/
+	//First Row
 	this->R[0][0] = 1.0f - 2.0f * (quaternion[1] * quaternion[1] + quaternion[2] * quaternion[2]); 
 	this->R[0][1] = 2.0f * (quaternion[0] * quaternion[1] - quaternion[3] * quaternion[2]); 
 	this->R[0][2] = 2.0f * (quaternion[0] * quaternion[2] + quaternion[3] * quaternion[1]);
 	this->R[0][3] = 0.0f;
 
-	/*Second Row*/
+	//Second Row
 	this->R[1][0] = 2.0f * (quaternion[0] * quaternion[1] + quaternion[3] * quaternion[2]);
 	this->R[1][1] = 1.0f - 2.0f * (quaternion[0] * quaternion[0] + quaternion[2] * quaternion[2]);
 	this->R[1][2] = 2.0f * (quaternion[1] * quaternion[2] - quaternion[3] * quaternion[0]);
 	this->R[1][3] = 0.0f;
 
-	/*Third Row*/
+	//Third Row
 	this->R[2][0] = 2.0f * (quaternion[0] * quaternion[2] - quaternion[3] * quaternion[1]);
 	this->R[2][1] = 2.0f * (quaternion[1] * quaternion[2] + quaternion[3] * quaternion[0]);
 	this->R[2][2] = 1.0f - 2.0f * (quaternion[0] * quaternion[0] + quaternion[1] * quaternion[1]);
 	this->R[2][3] = 0.0f;
 
-	/*Fourth Row */
+	//Fourth Row 
 	this->R[3][0] = 0.0f;
 	this->R[3][1] = 0.0f;
 	this->R[3][2] = 0.0f;
 	this->R[3][3] = 1.0f;
 
-	/*glm::vec4 vertex;
-	vertex[0] = transform[0][0] * pivote[0] + transform[0][1] * pivote[1] + transform[0][2] * pivote[2] + transform[0][3] * pivote[3];
-	vertex[1] = transform[1][0] * pivote[0] + transform[1][1] * pivote[1] + transform[1][2] * pivote[2] + transform[1][3] * pivote[3];
-	vertex[2] = transform[2][0] * pivote[0] + transform[2][1] * pivote[1] + transform[2][2] * pivote[2] + transform[2][3] * pivote[3];
-	return vertex;*/
+
 }
 
 void Model::setScale(float scale){
@@ -432,13 +427,6 @@ void Model::initGLStructure(){
 		this->glVertexes[i+1] = (GLfloat)this->vertexes[j]->y;
 		this->glVertexes[i+2] = (GLfloat)this->vertexes[j]->z;
 
-		/*for (int k = 0; k < (int)this->faces.size(); k++)
-			if ((int)(this->faces[k]->x - 1.0) == j  || (int)(this->faces[k]->y - 1.0) == j  || (int)(this->faces[k]->z - 1.0) == j) {
-				this->glNormals[i] = (GLfloat)this->normalFaces[k]->x;
-				this->glNormals[i+1] = (GLfloat)this->normalFaces[k]->y;
-				this->glNormals[i+2] = (GLfloat)this->normalFaces[k]->z;
-			}*/
-
 		this->glNormalsByVertex[i] = (GLfloat)this->normalVertexes[j]->x;
 		this->glNormalsByVertex[i+1] = (GLfloat)this->normalVertexes[j]->y;
 		this->glNormalsByVertex[i+2] = (GLfloat)this->normalVertexes[j]->z;
@@ -456,118 +444,6 @@ void Model::initGLStructure(){
 		this->glNormals[i + 7] = (GLfloat)this->normalFaces[j]->y;
 		this->glNormals[i + 8] = (GLfloat)this->normalFaces[j]->z;
 	}
-
-	//this->shadingProgram->enable();
-	/*GLuint vertexBufferID;
-	glGenBuffers(1, &vertexBufferID);
-	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(this->glVertexes), this->glVertexes, GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
-
-	GLuint normalsBufferID;
-	glGenBuffers(1, &normalsBufferID);
-	glBindBuffer(GL_ARRAY_BUFFER, normalsBufferID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(this->glNormals), this->glNormals, GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 9, GL_FLOAT, GL_FALSE, sizeof(float) * 3 * 3, 0);
-	// Layout 1 -- NORMAL FACES
-
-	GLuint normalsByVertexBufferID;
-	glGenBuffers(1, &normalsByVertexBufferID);
-	glBindBuffer(GL_ARRAY_BUFFER, normalsByVertexBufferID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(this->glNormalsByVertex), this->glNormalsByVertex, GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);*/
-	// Layout 2 -- NORMAL BY VERTEX
-	//----------------------------------------------//
-	/*GLuint Color_Material_DiffusoID;
-	glGenBuffers(1, &Color_Material_DiffusoID);
-	glBindBuffer(GL_ARRAY_BUFFER, Color_Material_DiffusoID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(this->matDiffuseReflectances), this->matDiffuseReflectances.rgb, GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(3);
-	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
-
-	GLuint matAmbientReflectancesID;
-	glGenBuffers(1, &matAmbientReflectancesID);
-	glBindBuffer(GL_ARRAY_BUFFER, matAmbientReflectancesID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(this->matAmbientReflectances), this->matAmbientReflectances.rgb, GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(4);
-	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
-
-	GLuint matSpecularReflectancesID;
-	glGenBuffers(1, &matSpecularReflectancesID);
-	glBindBuffer(GL_ARRAY_BUFFER, matSpecularReflectancesID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(this->matSpecularReflectances), this->matSpecularReflectances.rgb, GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(5);
-	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
-
-	GLuint matShininessID;
-	glGenBuffers(1, &matShininessID);
-	glBindBuffer(GL_ARRAY_BUFFER, matShininessID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(this->matShininess), &this->matShininess, GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(6);
-	glVertexAttribPointer(6, 1, GL_FLOAT, GL_FALSE, sizeof(float), 0);
-
-
-	GLuint lightAmbientIntensityID;
-	glGenBuffers(1, &lightAmbientIntensityID);
-	glBindBuffer(GL_ARRAY_BUFFER, lightAmbientIntensityID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(this->lightAmbientIntensity), this->lightAmbientIntensity.rgb, GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(7);
-	glVertexAttribPointer(7, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
-
-	GLuint lightDiffuseIntensityID;
-	glGenBuffers(1, &lightDiffuseIntensityID);
-	glBindBuffer(GL_ARRAY_BUFFER, lightDiffuseIntensityID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(this->lightDiffuseIntensity), this->lightDiffuseIntensity.rgb, GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(8);
-	glVertexAttribPointer(8, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);
-
-	GLuint lightSpecularIntensityID;
-	glGenBuffers(1, &lightSpecularIntensityID);
-	glBindBuffer(GL_ARRAY_BUFFER, lightSpecularIntensityID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(this->lightSpecularIntensity), this->lightSpecularIntensity.rgb, GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(9);
-	glVertexAttribPointer(9, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, 0);*/
-
-	/*Matrices :( */
-/*glm::vec3 cameraPosition = glm::vec3(15.0f,15.0f, 0.0f);
-	glm::mat4x4 projection = glm::perspective(44.766655555f, 1440.0f / 900.0f, 1.0f, 1000.0f);// Hay que settearlos por el valor real !! reshape y todo el rollo NO CAMBIAR ESA CONSTANTE
-	glm::mat4x4 modelView = glm::lookAt(cameraPosition, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-	glm::mat4x4 normalMatrix = glm::transpose(glm::inverse(modelView));
-
-	GLuint cameraPositionID;
-	glGenBuffers(1, &cameraPositionID);
-	glBindBuffer(GL_ARRAY_BUFFER, cameraPositionID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3), glm::value_ptr(cameraPosition), GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(10);
-	glVertexAttribPointer(10, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), 0);
-
-	GLuint projectionID;
-	glGenBuffers(1, &projectionID);
-	glBindBuffer(GL_ARRAY_BUFFER, projectionID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::mat4), glm::value_ptr(projection), GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(11);
-	glVertexAttribPointer(11, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), 0);
-
-	GLuint modelViewID;
-	glGenBuffers(1, &modelViewID);
-	glBindBuffer(GL_ARRAY_BUFFER, modelViewID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::mat4), glm::value_ptr(modelView), GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(12);
-	glVertexAttribPointer(12, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), 0);
-
-	GLuint normalMatrixID;
-	glGenBuffers(1, &normalMatrixID);
-	glBindBuffer(GL_ARRAY_BUFFER, normalMatrixID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::mat4), glm::value_ptr(normalMatrix), GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(13);
-	glVertexAttribPointer(13, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), 0);*/
-
-
-	
-
 	
 }
 
@@ -701,13 +577,13 @@ glm::mat4x4 Model::getTransform(){
 
 void Model::normalCalculate(){
 	glm::vec3 p1, p2, p3, pm, v_normal, vertex;
-	//glm::vec3 center = this->getCenter();
+
 	Vertex *u = new Vertex();
 	Vertex *v = new Vertex();
 	Vertex *p = new Vertex();
 	double norm;
 	
-	/*Vectores normales para las caras*/
+	//Vectores normales para las caras
 	this->normalFaces.clear();
 	this->facesMiddle.clear();
 	for (int i = 0; i < (int)this->faces.size(); i++){
@@ -717,7 +593,7 @@ void Model::normalCalculate(){
 
 		v_normal = glm::normalize(glm::cross(p2 - p1, p3 - p1));
 
-		/*Normalizamos - vector unitario*/
+		//Normalizamos - vector unitario
 		this->normalFaces.push_back(new Vertex(v_normal.x, v_normal.y, v_normal.z));
 
 		p1.x = this->vertexes[(int)this->faces[i]->x - 1]->x;
@@ -732,13 +608,13 @@ void Model::normalCalculate(){
 		p3.y = this->vertexes[(int)this->faces[i]->z - 1]->y;
 		p3.z = this->vertexes[(int)this->faces[i]->z - 1]->z;
 
-		/*Calculamos el punto Medio para poder desplegar las normales por cara*/
+		//Calculamos el punto Medio para poder desplegar las normales por cara
 		pm = (p1 + p2 + p3) / 3.0f;
 		this->facesMiddle.push_back(new Vertex(pm[0], pm[1], pm[2]));
 		
 	}
 
-	/*Vectores normales para los vertices*/
+
 	int n = 0;
 	this->normalVertexes.clear();
 	for (int i = 0; i < (int)this->vertexes.size(); i++){
@@ -754,7 +630,7 @@ void Model::normalCalculate(){
 		p->x /= (double)n;
 		p->y /= (double)n;
 		p->z /= (double)n;
-		/*Normalizamos - vector unitario*/
+
 		norm = pow(p->x*p->x + p->y*p->y + p->z*p->z, 0.5);
 		p->x /= norm;
 		p->y /= norm;
@@ -765,25 +641,13 @@ void Model::normalCalculate(){
 
 void Model::escalar(){
 	glm::vec4 pivote;
-	/*glm::mat4x4 T = glm::mat4(1.0f);
-	glm::mat4x4 S = glm::mat4(1.0f);
 
-	T[0][3] = 0.0f;
-	T[1][3] = -1.0f;
-	T[2][3] = 0.0f;
-
-	S[0][0] = 1.0f;
-	S[1][1] = 1.0f;
-	S[2][2] = 1.0f;*/
 
 	for (int i = 0; i < (int)this->vertexes.size(); i++){
 		this->vertexes[i]->x = this->vertexes[i]->x*1.0 / this->max;
 		this->vertexes[i]->y = this->vertexes[i]->y*1.0 / this->max;
 		this->vertexes[i]->z = this->vertexes[i]->z*1.0 / this->max;
-		/*pivote = transformVector(T*S, this->vertexes[i]);
-		this->vertexes[i]->x = pivote[0];
-		this->vertexes[i]->y = pivote[1];
-		this->vertexes[i]->z = pivote[2];*/
+
 	}
 }
 
@@ -852,6 +716,6 @@ glm::vec4 Model::__transformVector__(glm::mat4 & transformInverse, Vertex * vect
 	vertex.y = transformInverse[1][0] * (GLdouble)vector->x + transformInverse[1][1] * (GLdouble)vector->y + transformInverse[1][2] * (GLdouble)vector->z + transformInverse[1][3] * (GLdouble)1.0f;
 	vertex.z = transformInverse[2][0] * (GLdouble)vector->x + transformInverse[2][1] * (GLdouble)vector->y + transformInverse[2][2] * (GLdouble)vector->z + transformInverse[2][3] * (GLdouble)1.0f;
 	return vertex;
-}
+}*/
 
 

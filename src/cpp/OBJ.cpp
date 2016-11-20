@@ -1,13 +1,7 @@
 #include <OBJ.h>
 #include <iostream>
 
-OBJ::OBJ() {}
-OBJ::~OBJ() {}
-
-using namespace std;
-
-void OBJ::loadModel(string ruta) {
-
+OBJ::OBJ(string ruta) {
 	//PONER NOMBRE DEL ARCHIVO | RUTA
 	// string archivo=openfilename(); //PILA
 	string archivo = ruta;
@@ -25,7 +19,7 @@ void OBJ::loadModel(string ruta) {
 			while (fe.get() != '\n') continue;
 		}
 		else if (leer == "v") {
-			label3: fe >> leer;
+		label3: fe >> leer;
 			x = stod(leer, &sz);
 			fe >> leer;
 			y = stod(leer, &sz);
@@ -48,25 +42,26 @@ void OBJ::loadModel(string ruta) {
 			bool aceptar = true;
 			while (fe >> leer) {
 				if (leer == "f") break;
-				if (leer == "s" || leer =="#" || leer[0]=='#') {
-					label2: while (fe.get() != '\n') continue;
-					if(fe>>leer){
-						if (leer == "s" || leer =="#" || leer[0]=='#') {
+				if (leer == "s" || leer == "#" || leer[0] == '#') {
+				label2: while (fe.get() != '\n') continue;
+					if (fe >> leer) {
+						if (leer == "s" || leer == "#" || leer[0] == '#') {
 							goto label2;
 						}
-						break;	
-					}else{
+						break;
+					}
+					else {
 						return;
 					}
 				}
 				aux = leer[0];
-				string Auxiliar = "";			
+				string Auxiliar = "";
 
 				for (int i = 1; i <= (int)leer.size() && aux != '/'; i++)
 				{
-					
+
 					Auxiliar = Auxiliar + aux;
-					if(i!=leer.size())
+					if (i != leer.size())
 						aux = leer[i];
 
 				}
@@ -77,37 +72,25 @@ void OBJ::loadModel(string ruta) {
 						aceptar = false;
 						break;
 					}
-				}				
+				}
 				if (aceptar)
 					myarray.push_back(atoi(Auxiliar.c_str()));
-			
+
 			}
 			agregarFace(myarray);
 			if (leer == "f") {
 				goto label;
-			}else if (leer == "v"){
+			}
+			else if (leer == "v") {
 				goto label3;
 			}
 		}
 	}
-
 }
 
+OBJ::~OBJ() {}
 
 void OBJ::agregarFace(vector<int> myarray) {
-
-	/*for (int i = (int)myarray.size()-1; i > -1; i--)
-	{
-		if (i == (int)myarray.size() - 1) {
-			this->faces.push_back(new Vertex(myarray[i], myarray[i - 1], myarray[i - 2]));
-			i = i - 2;
-		}
-		else {
-			this->faces.push_back(new Vertex(myarray[(int)myarray.size() - 1], myarray[i + 1], myarray[i]));
-		}
-
-	}*/
-	
 	for (int i = 0; i < (int)myarray.size(); i++)
 	{
 		if (i == 0) {

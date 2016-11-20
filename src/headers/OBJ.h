@@ -7,7 +7,7 @@
 class OBJ : public Model
 {
 public:
-	OBJ();
+	OBJ(string path);
 	~OBJ();
 	void loadModel(string ruta);
 	void agregarFace(vector<int> Faces);

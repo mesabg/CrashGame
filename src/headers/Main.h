@@ -2,8 +2,8 @@
 #ifndef __MAIN_H_
 #define __MAIN_H_
 
-#include <RenderInterface.h>
 #include <ConcreteRenderController.h>
+#include <ConcreteGameController.h>
 
 int amountOfEnemies = 15;
 int amountOfPlayers = 1;

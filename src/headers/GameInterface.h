@@ -2,7 +2,10 @@
 #ifndef __GAME_INTERFACE_H__
 #define __GAME_INTERFACE_H__
 
-#include <Model.h>
+#include <CreatorOBJ.h>
+#include <CreatorOFF.h>
+#include <CreatorMD2.h>
+#include <CreatorMD5.h>
 #include <glm\glm\glm.hpp>
 #include <glm\glm\gtc\matrix_transform.hpp>
 #include <glm\glm\gtc\type_ptr.hpp>
@@ -17,13 +20,17 @@ protected:
 	/*Variables*/
 	int power;
 	int life;
+
+	/*Model Creator*/
+	ModelsCreator* localModelsCreator;
 public:
-	Entity();
-	Entity(GameController* gameController);
+	Entity(GameController* gameController, string path);
 	~Entity();
 	void Send(string message, void* data);
 	void SetRenderController(GameController* renderController);
 	virtual void Notify(string message, void* data) = 0;
+	/*Create Model*/
+	Model* CreateModel(string path);
 };
 
 class GameController {
