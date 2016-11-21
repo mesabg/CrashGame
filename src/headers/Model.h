@@ -13,7 +13,7 @@ using std::string;
 
 class Model{
 protected:
-	GLfloat* glVBO;
+	GLfloat* glVBO; /*v1 v2 v3 vn1 vn2 vn3 vt1 vt2 vt3*/
 	Sound* sound;
 	Transformation* transformation;
 	BoundingBox* boundingBox;

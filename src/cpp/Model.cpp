@@ -52,6 +52,7 @@ Model::Model(Mediator* mediator) :Colleague(mediator) {
 }*/
 
 Model::Model(){
+	this->glVBO = new GLfloat[3];
 }
 
 Model::~Model() {}
