@@ -1,48 +1,36 @@
-﻿  BoundingBox.cpp
-..\src\cpp\BoundingBox.cpp(20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-..\src\cpp\BoundingBox.cpp(21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-..\src\cpp\BoundingBox.cpp(22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-..\src\cpp\BoundingBox.cpp(74): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-..\src\cpp\BoundingBox.cpp(75): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-..\src\cpp\BoundingBox.cpp(76): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  ConcreteMediator.cpp
-  CreatorOBJ.cpp
-  CreatorOFF.cpp
-  FileLoader.cpp
-  GLSLProgram.cpp
-  Main.cpp
-  Mediator_Colleague.cpp
-  Model.cpp
-..\src\cpp\Model.cpp(723): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-..\src\cpp\Model.cpp(724): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-..\src\cpp\Model.cpp(725): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-..\src\cpp\Model.cpp(727): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-..\src\cpp\Model.cpp(728): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-..\src\cpp\Model.cpp(729): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-..\src\cpp\Model.cpp(731): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-..\src\cpp\Model.cpp(732): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-..\src\cpp\Model.cpp(733): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-..\src\cpp\Model.cpp(835): warning C4244: '=': conversion from 'GLdouble' to 'float', possible loss of data
-..\src\cpp\Model.cpp(836): warning C4244: '=': conversion from 'GLdouble' to 'float', possible loss of data
-..\src\cpp\Model.cpp(837): warning C4244: '=': conversion from 'GLdouble' to 'float', possible loss of data
-..\src\cpp\Model.cpp(851): warning C4244: '=': conversion from 'GLdouble' to 'float', possible loss of data
-..\src\cpp\Model.cpp(852): warning C4244: '=': conversion from 'GLdouble' to 'float', possible loss of data
-..\src\cpp\Model.cpp(853): warning C4244: '=': conversion from 'GLdouble' to 'float', possible loss of data
-  ModelsCreator.cpp
-  OBJ.cpp
+﻿  Transformation.cpp
+  Texture.cpp
+  Stage.cpp
+  Sound.cpp
+  SkyBox.cpp
+  GUI.cpp
+  RenderInterface.cpp
+  Projection.cpp
+  Player.cpp
   OFF.cpp
-  RGB_.cpp
-  SideBar.cpp
-  UserInterface.cpp
-C:\Program Files (x86)\Windows Kits\8.1\Include\shared\minwindef.h(130): warning C4005: 'APIENTRY': macro redefinition
-  C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\src\include\glfw3.h(98): note: see previous definition of 'APIENTRY'
-  Vertex.cpp
+  Object.cpp
+  OBJ.cpp
+  ModelsCreator.cpp
+  ModelRoutesData.cpp
+  Model.cpp
+  MD5.cpp
+  MD2.cpp
+  Main.cpp
+  Light.cpp
+  GameInterface.cpp
   Generating Code...
-  .NETFramework,Version=v4.0.AssemblyAttributes.cpp
-  BoundingBox.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
+  Compiling...
+  CGLSLProgram.cpp
+  Enemy.cpp
+  CreatorOFF.cpp
+  CreatorOBJ.cpp
+  CreatorMD5.cpp
+  CreatorMD2.cpp
+  ConcreteRenderController.cpp
+  ConcreteGameController.cpp
+  Camera.cpp
+  BoundingBox.cpp
+  Generating Code...
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-SideBar.obj : warning LNK4248: unresolved typeref token (01000019) for 'CTwBar'; image may not run
-UserInterface.obj : warning LNK4248: unresolved typeref token (01000017) for 'GLFWwindow'; image may not run
-UserInterface.obj : warning LNK4248: unresolved typeref token (0100001B) for 'GLFWmonitor'; image may not run
   CrashGame.vcxproj -> C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\bin\Debug\CrashGame.exe
   CrashGame.vcxproj -> C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\bin\Debug\CrashGame.pdb (Partial PDB)

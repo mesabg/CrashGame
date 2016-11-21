@@ -56,6 +56,42 @@ Model::Model(){
 
 Model::~Model() {}
 
+void Model::render(){
+
+}
+
+GLfloat * Model::getGLVBO(){
+	return this->glVBO;
+}
+
+Sound * Model::getSound(){
+	return this->sound;
+}
+
+Transformation * Model::getTransformation(){
+	return this->transformation;
+}
+
+BoundingBox * Model::getBoundingBox(){
+	return this->boundingBox;
+}
+
+Texture * Model::getTexture(){
+	return this->texture;
+}
+
+void Model::setSound(Sound * sound){
+	this->sound = sound;
+}
+
+void Model::setTransformation(Transformation * transformation){
+	this->transformation = transformation;
+}
+
+void Model::setTexture(Texture * texture){
+	this->texture = texture;
+}
+
 
 void Model::Inherit(Model * model) {
 	/*Copy All the values*/

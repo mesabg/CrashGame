@@ -5,15 +5,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Resource Files\Models">
-      <UniqueIdentifier>{45074ba2-7de0-41b1-8ecb-83eccde75c3d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Models\OBJ">
-      <UniqueIdentifier>{ee4bfa7f-c403-4194-995d-6ef678d7b866}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Models\MD2">
-      <UniqueIdentifier>{38780021-c980-43ed-8ee6-b404e240c425}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Render Interface">
       <UniqueIdentifier>{abf26419-259f-4bd2-a01a-3bf3f971e07a}</UniqueIdentifier>
     </Filter>
@@ -178,6 +169,9 @@
     <ClCompile Include="..\src\cpp\CreatorMD5.cpp">
       <Filter>Model\Creator\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\cpp\ModelRoutesData.cpp">
+      <Filter>Secondary Objects\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\headers\RenderInterface.h">
@@ -267,6 +261,9 @@
     <ClInclude Include="..\src\headers\MD5.h">
       <Filter>Model\Concrete\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\headers\ModelRoutesData.h">
+      <Filter>Secondary Objects\Header FIles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -288,10 +285,5 @@
     <None Include="..\src\shaders\Phong.vert">
       <Filter>Resource Files\Shaders\Vertex</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="..\models\obj\Crash\Principal\crash.obj">
-      <Filter>Resource Files\Models\OBJ</Filter>
-    </Object>
   </ItemGroup>
 </Project>

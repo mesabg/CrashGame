@@ -9,7 +9,7 @@ class CreatorOBJ : public ModelsCreator{
 public:
 	CreatorOBJ();
 	~CreatorOBJ();
-	Model* create(string path);
+	Model* create(ModelRoutesData* routes);
 };
 
 #endif

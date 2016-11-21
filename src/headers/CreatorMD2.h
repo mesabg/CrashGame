@@ -10,7 +10,7 @@ class CreatorMD2 : public ModelsCreator
 public:
 	CreatorMD2();
 	~CreatorMD2();
-	Model* factoryMethod();
+	Model* create(ModelRoutesData* routes);
 };
 
 #endif

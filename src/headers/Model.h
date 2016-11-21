@@ -6,6 +6,7 @@
 #include <Sound.h>
 #include <BoundingBox.h>
 #include <Texture.h>
+#include <ModelRoutesData.h>
 #include <string>
 
 using std::string;

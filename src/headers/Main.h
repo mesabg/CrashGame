@@ -5,8 +5,8 @@
 #include <ConcreteRenderController.h>
 #include <ConcreteGameController.h>
 
-int amountOfEnemies = 15;
 int amountOfPlayers = 1;
-int amountOfObjects = 32;
+int amountOfEnemies = 3;
+int amountOfObjects = 3;
 
 #endif

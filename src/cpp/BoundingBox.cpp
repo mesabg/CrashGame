@@ -2,11 +2,12 @@
 #include <iostream>
 
 BoundingBox::BoundingBox() {
-	this->color = RGB_::make_rgb(0.8f, 0.0f, 0.0f);
+	//this->color = RGB_::make_rgb(0.8f, 0.0f, 0.0f);
 }
 
 BoundingBox::~BoundingBox() {}
 
+/*
 void BoundingBox::setVertexBox(Vertex * vertex){
 	if (vertex->x < this->min->x) this->min->x = vertex->x;
 	if (vertex->x > this->max->x) this->max->x = vertex->x;
@@ -117,3 +118,4 @@ glm::vec3 BoundingBox::getCenter(){
 glm::vec3 BoundingBox::getCenter2() {
 	return this->center2;
 }
+*/

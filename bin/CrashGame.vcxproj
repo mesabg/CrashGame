@@ -137,6 +137,7 @@
     <ClCompile Include="..\src\cpp\MD2.cpp" />
     <ClCompile Include="..\src\cpp\MD5.cpp" />
     <ClCompile Include="..\src\cpp\Model.cpp" />
+    <ClCompile Include="..\src\cpp\ModelRoutesData.cpp" />
     <ClCompile Include="..\src\cpp\ModelsCreator.cpp" />
     <ClCompile Include="..\src\cpp\OBJ.cpp" />
     <ClCompile Include="..\src\cpp\Object.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="..\src\headers\MD2.h" />
     <ClInclude Include="..\src\headers\MD5.h" />
     <ClInclude Include="..\src\headers\Model.h" />
+    <ClInclude Include="..\src\headers\ModelRoutesData.h" />
     <ClInclude Include="..\src\headers\ModelsCreator.h" />
     <ClInclude Include="..\src\headers\OBJ.h" />
     <ClInclude Include="..\src\headers\Object.h" />
@@ -190,9 +192,6 @@
     <None Include="..\src\shaders\Phong.frag" />
     <None Include="..\src\shaders\Phong.vert" />
     <None Include="ClassDiagram.cd" />
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="..\models\obj\Crash\Principal\crash.obj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,20 +1,32 @@
 #include <GameInterface.h>
 
-Entity::Entity(GameController * gameController, string path){
+Entity::Entity(GameController * gameController, ModelRoutesData* routes, vector<int> *contextData){
 	this->gameController = gameController;
-	Model::Inherit(CreateModel(path));
+	Model::Inherit(CreateModel(routes));
 }
 
-Model* Entity::CreateModel(string path){
-	int length = path.length();
-	string type;
-	type.push_back(path[length - 3]);
-	type.push_back(path[length - 2]);
-	type.push_back(path[length - 1]);
+Entity::~Entity(){
 
-	if (type == "obj") return (localModelsCreator = new CreatorOBJ())->create(path);
-	if (type == "off") return (localModelsCreator = new CreatorOFF())->create(path);
-	if (type == "md2") return (localModelsCreator = new CreatorMD2())->create(path);
-	if (type == "md5") return (localModelsCreator = new CreatorMD5())->create(path);
+}
+
+void Entity::Send(string message, void * data){
+	this->gameController->Send(message, data, this);
+}
+
+void Entity::SetRenderController(GameController * gameController){
+	this->gameController = gameController;
+}
+
+Model* Entity::CreateModel(ModelRoutesData* routes){
+	int length = routes->model.length();
+	string type;
+	type.push_back(routes->model.at(length - 3));
+	type.push_back(routes->model.at(length - 2));
+	type.push_back(routes->model.at(length - 1));
+
+	if (type == "obj") return (localModelsCreator = new CreatorOBJ())->create(routes);
+	if (type == "off") return (localModelsCreator = new CreatorOFF())->create(routes);
+	if (type == "md2") return (localModelsCreator = new CreatorMD2())->create(routes);
+	if (type == "md5") return (localModelsCreator = new CreatorMD5())->create(routes);
 	return nullptr;
 }

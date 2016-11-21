@@ -7,9 +7,8 @@
 class OFF : public Model
 {
 public:
-	OFF();
+	OFF(ModelRoutesData* routes);
 	~OFF();
-	void loadModel(string ruta);
 	void agregarFace(vector<int> Faces);
 };
 

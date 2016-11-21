@@ -1,10 +1,7 @@
 #include <OFF.h>
 
-OFF::OFF() {}
-OFF::~OFF() {}
-
-void OFF::loadModel(string ruta) {
-	string archivo = ruta;
+OFF::OFF(ModelRoutesData* routes) {
+	/*string archivo = routes->model;
 	if (archivo.empty()) return;
 	ifstream fe(archivo);
 	Vertex* vertex;
@@ -62,11 +59,15 @@ void OFF::loadModel(string ruta) {
 				agregarFace(myarray);
 			}
 		}
-	}
+	}*/
+}
+
+OFF::~OFF() {
+
 }
 
 void OFF::agregarFace(vector<int> myarray) {
-	for (int i = 0; i < (int)myarray.size(); i++)
+	/*for (int i = 0; i < (int)myarray.size(); i++)
 	{
 		if (i == 0) {
 			this->faces.push_back(new Vertex(myarray[i], myarray[i + 1], myarray[i + 2]));
@@ -75,5 +76,5 @@ void OFF::agregarFace(vector<int> myarray) {
 		else {
 			this->faces.push_back(new Vertex(myarray[0], myarray[i - 1], myarray[i]));
 		}
-	}
+	}*/
 }

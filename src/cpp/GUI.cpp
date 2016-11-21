@@ -63,7 +63,7 @@ GLFWwindow * GUI::getWindow(){
 }
 
 void GUI::setSize(const float width, const float height){
-	reshape(this->gWindow, width, height);
+	reshape(this->gWindow, (int)width, (int)height);
 }
 
 
@@ -119,8 +119,8 @@ void GUI::reshape(GLFWwindow *window, int width, int height) {
 	//localGUI->mModelViewMatrix = glm::translate(glm::mat4(), glm::vec3(3.0f, 3.0f, 10.0f));
 
 	float* size = new float[2];
-	size[0] = localGUI->gWidth;
-	size[1] = localGUI->gHeight;
+	size[0] = (float)localGUI->gWidth;
+	size[1] = (float)localGUI->gHeight;
 	localGUI->renderController->Send("Reshape", (void*)size, localGUI);
 	delete size;
 }

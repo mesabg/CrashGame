@@ -4,6 +4,6 @@ CreatorMD5::CreatorMD5() {}
 
 CreatorMD5::~CreatorMD5() {}
 
-Model* CreatorMD5::factoryMethod() {
-	return new MD5();
+Model* CreatorMD5::create(ModelRoutesData* routes) {
+	return new MD5(routes);
 }

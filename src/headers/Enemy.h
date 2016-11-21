@@ -9,16 +9,16 @@ extern int amountOfEnemies;
 class Enemy : public Entity{
 private:
 	/*Multiple Singleton*/
-	static Enemy** uniqueEnemies;
+	static vector<Enemy*> uniqueEnemies;
 
 	/*Variables*/
 
 	/*Functions*/
-	Enemy();
+	Enemy(GameController *gameController, ModelRoutesData* route, vector<int> *contextData);
 	~Enemy();
 public:
 	/*Get Instance*/
-	static Enemy* Instance(GameController* gameController, const int index);
+	static Enemy* Instance(GameController* gameController, ModelRoutesData* routes, vector<int> *contextData, const int index);
 	static void Destroy();
 
 	/*Get message*/

@@ -4,6 +4,6 @@ CreatorOFF::CreatorOFF() {}
 
 CreatorOFF::~CreatorOFF() {}
 
-Model* CreatorOFF::factoryMethod() {
-	return new OFF();
+Model* CreatorOFF::create(ModelRoutesData* routes) {
+	return new OFF(routes);
 }

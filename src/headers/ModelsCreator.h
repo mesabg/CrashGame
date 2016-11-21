@@ -13,7 +13,7 @@ class ModelsCreator
 public:
 	ModelsCreator();
 	~ModelsCreator();
-	virtual Model* create(string path) = 0;
+	virtual Model* create(ModelRoutesData* routes) = 0;
 };
 
 #endif

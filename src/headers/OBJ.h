@@ -7,9 +7,8 @@
 class OBJ : public Model
 {
 public:
-	OBJ(string path);
+	OBJ(ModelRoutesData* routes);
 	~OBJ();
-	void loadModel(string ruta);
 	void agregarFace(vector<int> Faces);
 };
 

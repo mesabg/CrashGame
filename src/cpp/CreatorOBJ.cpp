@@ -4,6 +4,6 @@ CreatorOBJ::CreatorOBJ() {}
 
 CreatorOBJ::~CreatorOBJ() {}
 
-Model* CreatorOBJ::create(string path) {
-	return new OBJ(path);
+Model* CreatorOBJ::create(ModelRoutesData* routes) {
+	return new OBJ(routes);
 }

@@ -1,10 +1,10 @@
 #include <OBJ.h>
 #include <iostream>
 
-OBJ::OBJ(string ruta) {
+OBJ::OBJ(ModelRoutesData* routes) {
 	//PONER NOMBRE DEL ARCHIVO | RUTA
 	// string archivo=openfilename(); //PILA
-	string archivo = ruta;
+	/*string archivo = routes->model;
 	if (archivo.empty()) return;
 	ifstream fe(archivo);
 	Vertex* vertex;
@@ -85,13 +85,13 @@ OBJ::OBJ(string ruta) {
 				goto label3;
 			}
 		}
-	}
+	}*/
 }
 
 OBJ::~OBJ() {}
 
 void OBJ::agregarFace(vector<int> myarray) {
-	for (int i = 0; i < (int)myarray.size(); i++)
+	/*for (int i = 0; i < (int)myarray.size(); i++)
 	{
 		if (i == 0) {
 			this->faces.push_back(new Vertex(myarray[i], myarray[i + 1], myarray[i + 2]));
@@ -100,5 +100,5 @@ void OBJ::agregarFace(vector<int> myarray) {
 		else {
 			this->faces.push_back(new Vertex(myarray[0], myarray[i - 1], myarray[i]));
 		}
-	}
+	}*/
 }

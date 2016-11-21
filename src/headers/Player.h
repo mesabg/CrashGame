@@ -15,11 +15,11 @@ private:
 	GameController* gameController;
 
 	/*Functions*/
-	Player(GameController * gameController, string path);
+	Player(GameController *gameController, ModelRoutesData* routes, vector<int> *contextData);
 	~Player();
 public:
 	/*Get Instance*/
-	static Player* Instance(GameController* gameController, string path, const int index);
+	static Player* Instance(GameController* gameController, ModelRoutesData* routes, vector<int> *contextData, const int index);
 	static void Destroy();
 
 	/*Get message*/

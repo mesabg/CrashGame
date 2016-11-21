@@ -7,10 +7,8 @@
 class MD2 : public Model
 {
 public:
-	MD2();
+	MD2(ModelRoutesData* routes);
 	~MD2();
-	void loadModel(string ruta);
-	void agregarFace(vector<int> Faces);
 };
 
 #endif

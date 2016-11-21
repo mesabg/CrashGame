@@ -9,16 +9,16 @@ extern int amountOfObjects;
 class Object : public Entity {
 private:
 	/*Multiple Singleton*/
-	static Object** uniqueObjects;
+	static vector<Object*> uniqueObjects;
 
 	/*Variables*/
 
 	/*Functions*/
-	Object();
+	Object(GameController *gameController, ModelRoutesData* routes, vector<int> *contextData);
 	~Object();
 public:
 	/*Get Instance*/
-	static Object* Instance(GameController* gameController, const int index);
+	static Object* Instance(GameController* gameController, ModelRoutesData* routes, vector<int> *contextData, const int index);
 	static void Destroy();
 
 	/*Get message*/

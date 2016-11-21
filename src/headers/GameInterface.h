@@ -24,13 +24,13 @@ protected:
 	/*Model Creator*/
 	ModelsCreator* localModelsCreator;
 public:
-	Entity(GameController* gameController, string path);
+	Entity(GameController* gameController, ModelRoutesData* routes, vector<int> *contextData);
 	~Entity();
 	void Send(string message, void* data);
-	void SetRenderController(GameController* renderController);
+	void SetRenderController(GameController* gameController);
 	virtual void Notify(string message, void* data) = 0;
 	/*Create Model*/
-	Model* CreateModel(string path);
+	Model* CreateModel(ModelRoutesData* routes);
 };
 
 class GameController {
