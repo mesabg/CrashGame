@@ -56,9 +56,13 @@ Model::Model(){
 }
 
 Model::Model(ModelRoutesData* routes) {
+	/*Init data structures*/
 	this->glVBO = (GLfloat*)malloc(sizeof(GLfloat));
 	this->texture = new Texture(routes->texture);
 	this->sound = new Sound(routes->sounds);
+
+	/*Init Uniforms ID*/
+	this->ID = new vector<GLint>(8, 0);
 }
 
 Model::~Model(){
@@ -67,7 +71,29 @@ Model::~Model(){
 
 void Model::render(GLuint shader_id){
 	/*Bind Uniforms*/
+	this->ID->at(0) = glGetUniformLocation(shader_id, "u_matAmbientReflectances");
+	glUniform3f(this->ID->at(0), this->ambient.r, this->ambient.g, this->ambient.b);
 
+	this->ID->at(1) = glGetUniformLocation(shader_id, "u_matDiffuseReflectances");
+	glUniform3f(this->ID->at(1), this->diffuse.r, this->diffuse.g, this->diffuse.b);
+
+	this->ID->at(2) = glGetUniformLocation(shader_id, "u_matSpecularReflectances");
+	glUniform3f(this->ID->at(2), this->specular.r, this->specular.g, this->specular.b);
+
+	this->ID->at(3) = glGetUniformLocation(shader_id, "u_matShininess");
+	glUniform1f(this->ID->at(3), this->shininess);
+
+	this->ID->at(4) = glGetUniformLocation(shader_id, "u_TInverse_Mat");
+	glUniformMatrix4fv(this->ID->at(4), 1, GL_FALSE, glm::value_ptr(this->transformation->getTraslationInverseMatrix()));
+
+	this->ID->at(5) = glGetUniformLocation(shader_id, "u_T_Mat");
+	glUniformMatrix4fv(this->ID->at(5), 1, GL_FALSE, glm::value_ptr(this->transformation->getTraslationMatrix()));
+
+	this->ID->at(6) = glGetUniformLocation(shader_id, "u_S_Mat");
+	glUniformMatrix4fv(this->ID->at(6), 1, GL_FALSE, glm::value_ptr(this->transformation->getScaleMatrix()));
+
+	this->ID->at(7) = glGetUniformLocation(shader_id, "u_R_Mat");
+	glUniformMatrix4fv(this->ID->at(7), 1, GL_FALSE, glm::value_ptr(this->transformation->getRotationMatrix()));
 
 	/*Rendering using VBO*/
 	glBindBuffer(GL_ARRAY_BUFFER, this->glVBO_dir);
@@ -170,42 +196,18 @@ void Model::display(bool glDepth, CGLSLProgram* shadingProgram, GLfloat* lightSo
 		glEnable(GL_LIGHT0);
 		shadingProgram->enable();
 
-		ID.push_back(glGetUniformLocation(shadingProgram->getProgramID(), "u_viewMat"));
-		glUniformMatrix4fv(ID[0], 1, GL_FALSE, glm::value_ptr(this->modelView));
-
 		ID.push_back(glGetUniformLocation(shadingProgram->getProgramID(), "u_normalMat"));
 		glUniformMatrix4fv(ID[1], 1, GL_FALSE, glm::value_ptr(glm::transpose(glm::inverse(this->modelView))));
 		//glUniformMatrix4fv(ID[1], 1, GL_FALSE, glm::value_ptr(R));
 
-		ID.push_back(glGetUniformLocation(shadingProgram->getProgramID(), "u_projMat"));
-		glUniformMatrix4fv(ID[2], 1, GL_FALSE, glm::value_ptr(this->projection));
 
-		ID.push_back(glGetUniformLocation(shadingProgram->getProgramID(), "u_lightPosition"));
-		glUniform3f(ID[3], luzCentro.x, luzCentro.y, luzCentro.z);
 //---------------------------------------------------------------------------------------///
 
-		ID.push_back(glGetUniformLocation(shadingProgram->getProgramID(), "u_lightAmbientIntensitys"));
-		glUniform3f(ID[4],this->lightAmbientIntensity.rgb[0], this->lightAmbientIntensity.rgb[1], this->lightAmbientIntensity.rgb[2]);
 
-		ID.push_back(glGetUniformLocation(shadingProgram->getProgramID(), "u_lightDiffuseIntensitys"));
-		glUniform3f(ID[5],this->lightDiffuseIntensity.rgb[0], this->lightDiffuseIntensity.rgb[1], this->lightDiffuseIntensity.rgb[2]);
-
-		ID.push_back(glGetUniformLocation(shadingProgram->getProgramID(), "u_lightSpecularIntensitys"));
-		glUniform3f(ID[6],this->lightSpecularIntensity.rgb[0], this->lightSpecularIntensity.rgb[1], this->lightSpecularIntensity.rgb[2]);
 
 //------------------------------------------------------------------------------------------------//
 
-		ID.push_back(glGetUniformLocation(shadingProgram->getProgramID(), "u_matAmbientReflectances"));
-		glUniform3f(ID[7],this->matAmbientReflectances.rgb[0], this->matAmbientReflectances.rgb[1], this->matAmbientReflectances.rgb[2]);
 
-		ID.push_back(glGetUniformLocation(shadingProgram->getProgramID(), "u_matDiffuseReflectances"));
-		glUniform3f(ID[8],this->matDiffuseReflectances.rgb[0], this->matDiffuseReflectances.rgb[1], this->matDiffuseReflectances.rgb[2]);
-
-		ID.push_back(glGetUniformLocation(shadingProgram->getProgramID(), "u_matSpecularReflectances"));
-		glUniform3f(ID[9],this->matSpecularReflectances.rgb[0], this->matSpecularReflectances.rgb[1], this->matSpecularReflectances.rgb[2]);
-
-		ID.push_back(glGetUniformLocation(shadingProgram->getProgramID(), "u_matShininess"));
-		glUniform1f(ID[10], (GLfloat)this->matShininess);
 
 		ID.push_back(glGetUniformLocation(shadingProgram->getProgramID(), "eye_position"));
 		glUniform3f(ID[11], 3.0f, 3.0f, 10.0f);

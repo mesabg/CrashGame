@@ -36,6 +36,10 @@ protected:
 	vec3 ambient;	/*Values of the refraction of the light*/
 	vec3 diffuse;
 	vec3 specular;
+	float shininess;
+
+	/*Uniforms IDs*/
+	vector<GLint> *ID;
 	
 public:
 	Model();

@@ -31,6 +31,9 @@ private:
 	/*Shader ID*/
 	GLuint shader_id;
 
+	/*Uniforms IDs*/
+	vector<GLint> *ID;
+
 	/*Functions*/
 	Stage(RenderController* renderController);
 	~Stage();
