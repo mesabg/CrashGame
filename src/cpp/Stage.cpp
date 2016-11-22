@@ -11,6 +11,7 @@ Stage::Stage(RenderController* renderController):RenderColleague(renderControlle
 	for (int i = 0; i < amountOfPlayers; i++) this->entities.push_back(Player::Instance(NULL, NULL, NULL, i));
 	for (int i = 0; i < amountOfEnemies; i++) this->entities.push_back(Enemy::Instance(NULL, NULL, NULL, i));
 	for (int i = 0; i < amountOfObjects; i++) this->entities.push_back(Object::Instance(NULL, NULL, NULL, i));
+	this->Send("get shader id", NULL);
 }
 
 Stage::~Stage(){
@@ -32,9 +33,11 @@ void Stage::Notify(string message, void * data){
 	if (message == "init VBOs")
 		for (int i = 0; i < (int)this->entities.size(); i++)
 			this->entities[i]->initGLDataBinding();
+	else if (message == "shader id")
+		this->shader_id = *((GLuint*)data);
 }
 
 void Stage::render(){
 	for (int i = 0; i < (int)this->entities.size(); i++)
-		this->entities[i]->render();
+		this->entities[i]->render(this->shader_id);
 }

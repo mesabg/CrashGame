@@ -28,6 +28,9 @@ private:
 	Projection* projection;
 	vector<Entity*> entities;
 
+	/*Shader ID*/
+	GLuint shader_id;
+
 	/*Functions*/
 	Stage(RenderController* renderController);
 	~Stage();

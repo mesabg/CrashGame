@@ -1,3 +1,36 @@
-﻿  Model.cpp
+﻿  Transformation.cpp
+  Texture.cpp
+  Stage.cpp
+  Sound.cpp
+  SkyBox.cpp
+  GUI.cpp
+  RenderInterface.cpp
+  Projection.cpp
+  Player.cpp
+  OFF.cpp
+  Object.cpp
+  OBJ.cpp
+  ModelsCreator.cpp
+  ModelRoutesData.cpp
+  Model.cpp
+  MD5.cpp
+  MD2.cpp
+  Main.cpp
+  Light.cpp
+  GameInterface.cpp
+  Generating Code...
+  Compiling...
+  CGLSLProgram.cpp
+  Enemy.cpp
+  CreatorOFF.cpp
+  CreatorOBJ.cpp
+  CreatorMD5.cpp
+  CreatorMD2.cpp
+  ConcreteRenderController.cpp
+  ConcreteGameController.cpp
+  Camera.cpp
+  BoundingBox.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   CrashGame.vcxproj -> C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\bin\Debug\CrashGame.exe
   CrashGame.vcxproj -> C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\bin\Debug\CrashGame.pdb (Partial PDB)

@@ -65,7 +65,11 @@ Model::~Model(){
 	
 }
 
-void Model::render(){
+void Model::render(GLuint shader_id){
+	/*Bind Uniforms*/
+
+
+	/*Rendering using VBO*/
 	glBindBuffer(GL_ARRAY_BUFFER, this->glVBO_dir);
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
@@ -123,10 +127,17 @@ void Model::Inherit(Model * model) {
 }
 
 void Model::initGLDataBinding(){
+	/*Init GL data binding*/
 	glGenBuffers(1, &(this->glVBO_dir));
 	glBindBuffer(GL_ARRAY_BUFFER, this->glVBO_dir);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(this->glVBO), this->glVBO, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	/*Enable Backface Culling and Z Buffer*/
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
 }
 /*
 void Model::display(bool glDepth, CGLSLProgram* shadingProgram, GLfloat* lightSourceGLvector, glm::vec3 luzCentro, bool glNormalVertexTypeFlag){

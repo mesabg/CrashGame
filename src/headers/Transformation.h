@@ -2,6 +2,9 @@
 #ifndef __TRANSFORMATION_H__
 #define __TRANSFORMATION_H__
 
+#include <glm\glm\glm.hpp>
+#include <glm\glm\gtx\transform.hpp>
+
 using glm::mat4;
 
 class Transformation {
@@ -10,7 +13,7 @@ private:
 
 public:
 	Transformation();
-	Transformation(float tx, float ty, float tz, float scale, float rx, float ry, float rz);
+	Transformation(float tx, float ty, float tz, float scale, float angle, float rx, float ry, float rz);
 	~Transformation();
 
 	/*getters*/
@@ -23,12 +26,12 @@ public:
 	/*Setters*/
 	void setTraslationMatrix(float tx, float ty, float tz);
 	void setScaleMatrix(float scale);
-	void setRotationMatrix(float rx, float ry, float rz);
+	void setRotationMatrix(float angle, float rx, float ry, float rz);
 
 	/*Adders*/
 	void addTraslationMatrix(float tx, float ty, float tz);
 	void addScaleMatrix(float scale);
-	void addRotationMatrix(float rx, float ry, float rz);
+	void addRotationMatrix(float angle, float rx, float ry, float rz);
 };
 
 #endif

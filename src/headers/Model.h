@@ -10,28 +10,38 @@
 #include <ModelRoutesData.h>
 #include <string>
 
+using glm::vec3;
 using std::string;
+using std::vector;
 
 class Model{
 protected:
+	/*Array to VBO*/
 	GLfloat* glVBO; /*v1x v1y v1z vn1x vn1y vn1z vt1 vt2 vt3*/
 	GLuint glVBO_dir;
-	std::vector<GLfloat*> vertexes;
-	std::vector<GLfloat*> normal;
-	std::vector<GLfloat*> texture_;
 
+	/*Arrays to load a model*/
+	vector<GLfloat*> vertexes;
+	vector<GLfloat*> normal;
+	vector<GLfloat*> texture_;
+	GLfloat max, min;
+
+	/*Structures*/
 	Sound* sound;
 	Transformation* transformation;
 	BoundingBox* boundingBox;
 	Texture* texture;
 
-	GLfloat max, min;
-
+	/*Light values*/
+	vec3 ambient;	/*Values of the refraction of the light*/
+	vec3 diffuse;
+	vec3 specular;
+	
 public:
 	Model();
 	Model(ModelRoutesData* routes);
 	~Model();
-	void render();
+	void render(GLuint shader_id);
 
 	/*Getters*/
 	GLfloat* getGLVBO();

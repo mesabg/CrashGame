@@ -3,6 +3,10 @@
 #define __TEXTURE_H__
 
 #include <string>
+#include <glew\glew.h>
+#include <stb-master\stb.h>
+/*#include <sdl2\SDL.h>
+#include <sdl2\SDL_image.h>*/
 
 using std::string;
 

@@ -21,6 +21,8 @@ ConcreteRenderController::~ConcreteRenderController() {}
 void ConcreteRenderController::Send(string message, void* data, RenderColleague* renderColleague) {
 	if (message == "Reshape" && renderColleague == this->gui) {
 		// Set projection and camera matrices
+	}else if (message == "get shader id" && renderColleague == this->stage) {
+		this->stage->Notify("shader id", reinterpret_cast<void*>(this->illuminationProgram->getProgramID()));
 	}
 }
 
