@@ -52,13 +52,26 @@ Model::Model(Mediator* mediator) :Colleague(mediator) {
 }*/
 
 Model::Model(){
-	this->glVBO = new GLfloat[3];
+	this->glVBO = (GLfloat*)malloc(sizeof(GLfloat));
 }
 
-Model::~Model() {}
+Model::~Model(){
+	
+}
 
 void Model::render(){
-
+	glBindBuffer(GL_ARRAY_BUFFER, this->glVBO_dir);
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_NORMAL_ARRAY);
+	glEnableClientState(GL_TEXTURE_ARRAY);
+	glVertexPointer(3, GL_FLOAT, 9*sizeof(GLfloat), 0);
+	glVertexPointer(3, GL_FLOAT, 9*sizeof(GLfloat), (void*)(3*sizeof(GLfloat)) );
+	glVertexPointer(3, GL_FLOAT, 9*sizeof(GLfloat), (void*)(6*sizeof(GLfloat)) );
+	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDisableClientState(GL_TEXTURE_ARRAY);
+	glDisableClientState(GL_NORMAL_ARRAY);
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 GLfloat * Model::getGLVBO(){
@@ -101,6 +114,12 @@ void Model::Inherit(Model * model) {
 	this->transformation = model->getTransformation();
 	this->texture = model->getTexture();
 	this->boundingBox = model->getBoundingBox();
+}
+
+void Model::initGLDataBinding(){
+	glGenBuffers(1, &this->glVBO_dir);
+	glBindBuffer(GL_ARRAY_BUFFER, this->glVBO_dir);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(this->glVBO), this->glVBO, GL_STATIC_DRAW);
 }
 /*
 void Model::display(bool glDepth, CGLSLProgram* shadingProgram, GLfloat* lightSourceGLvector, glm::vec3 luzCentro, bool glNormalVertexTypeFlag){

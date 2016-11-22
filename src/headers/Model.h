@@ -13,7 +13,11 @@ using std::string;
 
 class Model{
 protected:
-	GLfloat* glVBO; /*v1 v2 v3 vn1 vn2 vn3 vt1 vt2 vt3*/
+	GLfloat* glVBO; /*v1x v1y v1z vn1x vn1y vn1z vt1 vt2 vt3*/
+	GLuint glVBO_dir;
+	std::vector<GLfloat*> vertexes;
+	std::vector<GLfloat*> normal;
+	std::vector<GLfloat*> texture;
 	Sound* sound;
 	Transformation* transformation;
 	BoundingBox* boundingBox;
@@ -38,6 +42,7 @@ public:
 
 	/*Inherit*/
 	void Inherit(Model* model);
+	
 };
 
 #endif
