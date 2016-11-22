@@ -21,13 +21,6 @@ private:
 	/*Funciones propias*/
 	bool initGlfw();
 
-	/*GLFW Callbacks*/
-	static void reshape(GLFWwindow *window, int width, int height);
-	static void cursorPos(GLFWwindow* window, double x, double y);
-	static void mouseButton(GLFWwindow* window, int button, int action, int mods);
-	static void keyInput(GLFWwindow *window, int key, int scancode, int action, int mods);
-	static void scrollCallback(GLFWwindow* window, double x, double y);
-
 public:
 
 	/*Get Instance*/
@@ -45,6 +38,13 @@ public:
 
 	/*Set funcitons*/
 	void setSize(const float width, const float height);
+
+	/*GLFW Callbacks*/
+	static void reshape(GLFWwindow *window, int width, int height);
+	static void cursorPos(GLFWwindow* window, double x, double y);
+	static void mouseButton(GLFWwindow* window, int button, int action, int mods);
+	static void keyInput(GLFWwindow *window, int key, int scancode, int action, int mods);
+	static void scrollCallback(GLFWwindow* window, double x, double y);
 };
 
 #endif

@@ -11,8 +11,9 @@ Enemy::~Enemy(){
 }
 
 Enemy * Enemy::Instance(GameController * gameController, ModelRoutesData * routes, vector<int> *contextData, const int index){
-	if ( (int)uniqueEnemies.size() < (index + 1) || uniqueEnemies[index] == NULL)
-		uniqueEnemies.push_back(new Enemy(gameController, routes, contextData));
+	if (index >= (int)uniqueEnemies.size()) return NULL;
+	if (uniqueEnemies[index] == NULL)
+		uniqueEnemies[index] = (new Enemy(gameController, routes, contextData));
 	return uniqueEnemies[index];
 }
 

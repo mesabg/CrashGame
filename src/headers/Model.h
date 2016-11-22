@@ -2,6 +2,7 @@
 #ifndef __MODEL_H_
 #define __MODEL_H_
 
+#include <glew\glew.h>
 #include <Transformation.h>
 #include <Sound.h>
 #include <BoundingBox.h>
@@ -17,14 +18,18 @@ protected:
 	GLuint glVBO_dir;
 	std::vector<GLfloat*> vertexes;
 	std::vector<GLfloat*> normal;
-	std::vector<GLfloat*> texture;
+	std::vector<GLfloat*> texture_;
+
 	Sound* sound;
 	Transformation* transformation;
 	BoundingBox* boundingBox;
 	Texture* texture;
 
+	GLfloat max, min;
+
 public:
 	Model();
+	Model(ModelRoutesData* routes);
 	~Model();
 	void render();
 
@@ -42,7 +47,9 @@ public:
 
 	/*Inherit*/
 	void Inherit(Model* model);
-	
+
+	/*Functions*/
+	void initGLDataBinding();
 };
 
 #endif

@@ -10,8 +10,10 @@ ConcreteRenderController::ConcreteRenderController() {
 ConcreteRenderController::ConcreteRenderController(const float width, const float height){
 	this->stage = Stage::Instance(this);
 	this->gui = GUI::Instance(this, (int)width, (int)height);
+	this->gui->reshape(this->gui->getWindow(), (int)width, (int)height);
 	this->illuminationProgram = NULL;
 	this->initGLSLPrograms();
+	this->stage->Notify("init VBOs", NULL);
 }
 
 ConcreteRenderController::~ConcreteRenderController() {}

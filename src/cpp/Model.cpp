@@ -55,6 +55,12 @@ Model::Model(){
 	this->glVBO = (GLfloat*)malloc(sizeof(GLfloat));
 }
 
+Model::Model(ModelRoutesData* routes) {
+	this->glVBO = (GLfloat*)malloc(sizeof(GLfloat));
+	this->texture = new Texture(routes->texture);
+	this->sound = new Sound(routes->sounds);
+}
+
 Model::~Model(){
 	
 }
@@ -63,12 +69,12 @@ void Model::render(){
 	glBindBuffer(GL_ARRAY_BUFFER, this->glVBO_dir);
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
-	glEnableClientState(GL_TEXTURE_ARRAY);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	glVertexPointer(3, GL_FLOAT, 9*sizeof(GLfloat), 0);
-	glVertexPointer(3, GL_FLOAT, 9*sizeof(GLfloat), (void*)(3*sizeof(GLfloat)) );
-	glVertexPointer(3, GL_FLOAT, 9*sizeof(GLfloat), (void*)(6*sizeof(GLfloat)) );
+	glNormalPointer(GL_FLOAT, 9*sizeof(GLfloat), (void*)(3*sizeof(GLfloat)) );
+	glTexCoordPointer( 3, GL_FLOAT, 9 * sizeof(GLfloat), (void*)(6 * sizeof(GLfloat)) );
 	glDrawArrays(GL_TRIANGLES, 0, 3);
-	glDisableClientState(GL_TEXTURE_ARRAY);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 	glDisableClientState(GL_NORMAL_ARRAY);
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -117,9 +123,10 @@ void Model::Inherit(Model * model) {
 }
 
 void Model::initGLDataBinding(){
-	glGenBuffers(1, &this->glVBO_dir);
+	glGenBuffers(1, &(this->glVBO_dir));
 	glBindBuffer(GL_ARRAY_BUFFER, this->glVBO_dir);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(this->glVBO), this->glVBO, GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 /*
 void Model::display(bool glDepth, CGLSLProgram* shadingProgram, GLfloat* lightSourceGLvector, glm::vec3 luzCentro, bool glNormalVertexTypeFlag){
@@ -698,12 +705,10 @@ void Model::normalCalculate(){
 void Model::escalar(){
 	glm::vec4 pivote;
 
-
 	for (int i = 0; i < (int)this->vertexes.size(); i++){
 		this->vertexes[i]->x = this->vertexes[i]->x*1.0 / this->max;
 		this->vertexes[i]->y = this->vertexes[i]->y*1.0 / this->max;
 		this->vertexes[i]->z = this->vertexes[i]->z*1.0 / this->max;
-
 	}
 }
 

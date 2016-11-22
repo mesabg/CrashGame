@@ -6,10 +6,12 @@
 
 class OBJ : public Model
 {
+private:
+	int index;
 public:
 	OBJ(ModelRoutesData* routes);
 	~OBJ();
-	void agregarFace(vector<int> Faces);
+	void agregarFace(vector<string> Faces);
 };
 
 #endif

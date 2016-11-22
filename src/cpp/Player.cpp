@@ -12,8 +12,9 @@ Player::~Player(){
 
 
 Player * Player::Instance(GameController  *gameController, ModelRoutesData* routes, vector<int> *contextData, const int index){
-	if ( (int)uniquePlayers.size() < (index+1) || uniquePlayers[index]==NULL )
-		uniquePlayers.push_back( new Player(gameController, routes, contextData) );
+	if (index >= (int)uniquePlayers.size()) return NULL;
+	if ( uniquePlayers[index] == NULL )
+		uniquePlayers[index] = ( new Player(gameController, routes, contextData) );
 	return uniquePlayers[index];
 }
 

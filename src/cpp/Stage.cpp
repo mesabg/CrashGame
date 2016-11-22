@@ -29,9 +29,12 @@ void Stage::Destroy(){
 }
 
 void Stage::Notify(string message, void * data){
-
+	if (message == "init VBOs")
+		for (int i = 0; i < (int)this->entities.size(); i++)
+			this->entities[i]->initGLDataBinding();
 }
 
 void Stage::render(){
-
+	for (int i = 0; i < (int)this->entities.size(); i++)
+		this->entities[i]->render();
 }

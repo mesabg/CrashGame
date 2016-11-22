@@ -8,8 +8,6 @@ GUI::GUI(RenderController* renderController):RenderColleague(renderController) {
 
 	if (!initGlfw() || glewInit() != GLEW_OK)
 		exit(1);
-
-	reshape(this->gWindow, this->gWidth, this->gHeight);
 }
 
 
@@ -19,8 +17,6 @@ GUI::GUI(RenderController* renderController, const int gWidth, const int gHeight
 
 	if (!initGlfw() || glewInit() != GLEW_OK)
 		exit(1);
-
-	reshape(this->gWindow, this->gWidth, this->gHeight);
 }
 
 
@@ -100,7 +96,7 @@ bool GUI::initGlfw() {
 
 
 void GUI::reshape(GLFWwindow *window, int width, int height) {
-	GUI *localGUI = GUI::Instance(NULL);
+	GUI* localGUI = GUI::Instance(NULL);
 	localGUI->gWidth = width;
 	localGUI->gHeight = height;
 
@@ -138,7 +134,7 @@ void GUI::mouseButton(GLFWwindow* window, int button, int action, int mods) {
 
 
 void GUI::keyInput(GLFWwindow * window, int key, int scancode, int action, int mods){
-	GUI *localUserInterface = GUI::Instance(NULL);
+	//GUI *localUserInterface = GUI::Instance(NULL);
 	/*if (key == GLFW_KEY_SPACE)
 		localUserInterface->renderController->Send("Volver al principal", localUserInterface);*/
 }

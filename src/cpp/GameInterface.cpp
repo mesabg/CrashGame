@@ -18,7 +18,8 @@ void Entity::SetRenderController(GameController * gameController){
 }
 
 Model* Entity::CreateModel(ModelRoutesData* routes){
-	int length = routes->model.length();
+	printf("Hola\n");
+	int length = routes->model.size();
 	string type;
 	type.push_back(routes->model.at(length - 3));
 	type.push_back(routes->model.at(length - 2));

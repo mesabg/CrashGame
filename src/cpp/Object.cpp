@@ -11,8 +11,9 @@ Object::~Object(){
 }
 
 Object * Object::Instance(GameController * gameController, ModelRoutesData * routes, vector<int>* contextData, const int index){
-	if ( (int)uniqueObjects.size() < (index + 1) || uniqueObjects[index] == NULL)
-		uniqueObjects.push_back(new Object(gameController, routes, contextData));
+	if (index >= (int)uniqueObjects.size()) return NULL;
+	if (uniqueObjects[index] == NULL)
+		uniqueObjects[index] = (new Object(gameController, routes, contextData));
 	return uniqueObjects[index];
 }
 
