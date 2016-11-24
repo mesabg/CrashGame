@@ -53,6 +53,12 @@ Model::Model(Mediator* mediator) :Colleague(mediator) {
 
 Model::Model(){
 	this->glVBO = (GLfloat*)malloc(sizeof(GLfloat));
+
+	/*Init Uniforms ID*/
+	this->ID = new vector<GLint>(8, 0);
+
+	/*Init Tranformation*/
+	this->transformation = new Transformation();
 }
 
 Model::Model(ModelRoutesData* routes) {
@@ -63,6 +69,9 @@ Model::Model(ModelRoutesData* routes) {
 
 	/*Init Uniforms ID*/
 	this->ID = new vector<GLint>(8, 0);
+
+	/*Init Tranformation*/
+	this->transformation = new Transformation();
 }
 
 Model::~Model(){
@@ -99,12 +108,12 @@ void Model::render(GLuint shader_id){
 	glBindBuffer(GL_ARRAY_BUFFER, this->glVBO_dir);
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+	//glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	glVertexPointer(3, GL_FLOAT, 9*sizeof(GLfloat), 0);
 	glNormalPointer(GL_FLOAT, 9*sizeof(GLfloat), (void*)(3*sizeof(GLfloat)) );
-	glTexCoordPointer( 3, GL_FLOAT, 9 * sizeof(GLfloat), (void*)(6 * sizeof(GLfloat)) );
+	//glTexCoordPointer( 3, GL_FLOAT, 9 * sizeof(GLfloat), (void*)(6 * sizeof(GLfloat)) );
 	glDrawArrays(GL_TRIANGLES, 0, 3);
-	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	//glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 	glDisableClientState(GL_NORMAL_ARRAY);
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);

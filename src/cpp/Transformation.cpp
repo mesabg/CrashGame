@@ -5,6 +5,8 @@ Transformation::Transformation(){
 	this->T = mat4(1.0f);
 	this->S = mat4(1.0f);
 	this->R = mat4(1.0f);
+	this->setTraslationMatrix(0.0f, 0.0f, 0.0f);
+	this->setScaleMatrix(1.0f);
 }
 
 Transformation::Transformation(float tx, float ty, float tz, float scale, float angle, float rx, float ry, float rz){
