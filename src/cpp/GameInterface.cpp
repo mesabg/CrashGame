@@ -1,6 +1,6 @@
 #include <GameInterface.h>
 
-Entity::Entity(GameController * gameController, ModelRoutesData* routes, vector<int> *contextData){
+Entity::Entity(GameController * gameController, ModelRoutesData* routes, vector<int> *contextData):Model(routes){
 	this->gameController = gameController;
 	Model::Inherit(CreateModel(routes));
 }
@@ -18,7 +18,6 @@ void Entity::SetRenderController(GameController * gameController){
 }
 
 Model* Entity::CreateModel(ModelRoutesData* routes){
-	printf("Hola\n");
 	int length = routes->model.size();
 	string type;
 	type.push_back(routes->model.at(length - 3));

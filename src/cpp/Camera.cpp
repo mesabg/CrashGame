@@ -5,7 +5,10 @@ void Camera::refresh(){
 }
 
 Camera::Camera(){
-
+	this->position = vec3(3.0f, 3.0f, 10.0f);
+	this->target = vec3(0.0f, 0.0f, 0.0f);
+	this->up = vec3(0.0f, 1.0f, 0.0f);
+	this->refresh();
 }
 
 Camera::Camera(vec3 position, vec3 target, vec3 up){

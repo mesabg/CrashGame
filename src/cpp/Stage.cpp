@@ -1,4 +1,7 @@
 #include <Stage.h>
+#include <iostream>
+
+using namespace std;
 
 Stage* Stage::uniqueStage = NULL;
 
@@ -14,9 +17,6 @@ Stage::Stage(RenderController* renderController):RenderColleague(renderControlle
 	for (int i = 0; i < amountOfPlayers; i++) this->entities.push_back(Player::Instance(NULL, NULL, NULL, i));
 	for (int i = 0; i < amountOfEnemies; i++) this->entities.push_back(Enemy::Instance(NULL, NULL, NULL, i));
 	for (int i = 0; i < amountOfObjects; i++) this->entities.push_back(Object::Instance(NULL, NULL, NULL, i));
-
-	/*Get shader ID*/
-	this->Send("get shader id", NULL);
 
 	/*Init Uniforms ID*/
 	this->ID = new vector<GLint>(7, 0);
@@ -37,12 +37,20 @@ void Stage::Destroy(){
 	uniqueStage->~Stage();
 }
 
-void Stage::Notify(string message, void * data){
+Projection * Stage::getProjection(){
+	return this->projection;
+}
+
+void Stage::Notify(string message, void* data){
 	if (message == "init VBOs")
 		for (int i = 0; i < (int)this->entities.size(); i++)
 			this->entities[i]->initGLDataBinding();
-	else if (message == "shader id")
-		this->shader_id = *((GLuint*)data);
+	else if (message == "shader id") 
+		this->shader_id = *((GLuint*)(&data));
+	else if (message == "width/height") {
+		this->width = ((float*)data)[0];
+		this->height = ((float*)data)[1];
+	}
 }
 
 void Stage::render(){
@@ -63,10 +71,10 @@ void Stage::render(){
 	glUniform3f(this->ID->at(4), this->camera->getPosition().x, this->camera->getPosition().y, this->camera->getPosition().z);
 
 	this->ID->at(5) = glGetUniformLocation(this->shader_id, "u_viewMat");
-	glUniformMatrix4fv(this->ID->at(5), 1, GL_FALSE, glm::value_ptr(this->camera->getMatrix()) );
+	glUniformMatrix4fv(this->ID->at(5), 1, GL_FALSE, &(this->camera->getMatrix())[0][0] );
 
 	this->ID->at(6) = glGetUniformLocation(this->shader_id, "u_projMat");
-	glUniformMatrix4fv(this->ID->at(6), 1, GL_FALSE, glm::value_ptr(this->projection->getMatrix()));
+	glUniformMatrix4fv(this->ID->at(6), 1, GL_FALSE, &(this->projection->getMatrix())[0][0]);
 
 	/*Render all the entities*/
 	for (int i = 0; i < (int)this->entities.size(); i++)

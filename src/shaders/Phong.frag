@@ -14,6 +14,7 @@ uniform float u_matShininess;
 in vec3 o_normal;
 in vec3 o_toLight;
 in vec3 o_toCamera;
+in vec3 texture;
 
 out vec4 resultingColor;
 
@@ -63,6 +64,6 @@ void main(void)
    vec3 Ispe = specularLighting(N, L, V);
 
    // combination of all components and diffuse color of the object
-   resultingColor.xyz = Iamb + Idif + Ispe;
+   resultingColor.xyz = (Iamb + Idif + Ispe);
    resultingColor.a = 1.0;
 } 

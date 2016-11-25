@@ -10,10 +10,10 @@ RenderColleague::RenderColleague(RenderController* renderController){
 
 RenderColleague::~RenderColleague() {}
 
-void RenderColleague::Send(string message, void* data){
-	this->renderController->Send(message, data, this);
-}
-
 void RenderColleague::SetRenderController(RenderController* renderController) {
 	this->renderController = renderController;
+}
+
+void RenderColleague::Send(string message, void * data){
+	this->renderController->Send(message, data, this);
 }

@@ -1,9 +1,7 @@
 #version 330
 
-in vec4 finalColor;
 out vec4 resultingColor;
 
-void main(void)
-{
-	resultingColor = finalColor;
+void main(void){
+	resultingColor = vec4(0.0, 0.0, 0.0, 0.0);
 } 

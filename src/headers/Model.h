@@ -8,6 +8,7 @@
 #include <BoundingBox.h>
 #include <Texture.h>
 #include <ModelRoutesData.h>
+#include <Light.h>
 #include <string>
 
 using glm::vec3;
@@ -33,9 +34,7 @@ protected:
 	Texture* texture;
 
 	/*Light values*/
-	vec3 ambient;	/*Values of the refraction of the light*/
-	vec3 diffuse;
-	vec3 specular;
+	Light* material; /*Values of the refraction of the light*/
 	float shininess;
 
 	/*Uniforms IDs*/

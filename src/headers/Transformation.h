@@ -6,6 +6,7 @@
 #include <glm\glm\gtx\transform.hpp>
 
 using glm::mat4;
+using glm::vec3;
 
 class Transformation {
 private:

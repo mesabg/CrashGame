@@ -27,6 +27,8 @@ private:
 	Camera* camera;
 	Projection* projection;
 	vector<Entity*> entities;
+	float width;
+	float height;
 
 	/*Shader ID*/
 	GLuint shader_id;
@@ -43,6 +45,9 @@ public:
 	/*Get Instance*/
 	static Stage* Instance(RenderController* renderController);
 	static void Destroy();
+
+	/*getters*/
+	Projection* getProjection();
 
 	/*Get message*/
 	void Notify(string message, void* data);

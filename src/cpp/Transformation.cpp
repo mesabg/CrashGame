@@ -44,13 +44,15 @@ mat4 Transformation::getRotationMatrix(){
 }
 
 void Transformation::setTraslationMatrix(float tx, float ty, float tz){
-	this->T[0][3] = tx; this->TInverse[0][3] = -tx;
+	this->T = glm::translate( vec3(tx, ty, tz) );
+	/*this->T[0][3] = tx; this->TInverse[0][3] = -tx;
 	this->T[1][3] = ty; this->TInverse[1][3] = -ty;
-	this->T[2][3] = tz; this->TInverse[2][3] = -tz;
+	this->T[2][3] = tz; this->TInverse[2][3] = -tz;*/
 }
 
 void Transformation::setScaleMatrix(float scale){
-	for (int i = 0; i < 3; i++) this->S[i][i] = scale;
+	this->S = glm::scale( vec3(scale, scale, scale) );
+	//for (int i = 0; i < 3; i++) this->S[i][i] = scale;
 }
 
 void Transformation::setRotationMatrix(float angle, float rx, float ry, float rz){

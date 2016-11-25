@@ -23,8 +23,8 @@ public:
 	RenderColleague(RenderController* renderController);
 	RenderColleague();
 	~RenderColleague();
-	void Send(string message, void* data);
 	void SetRenderController(RenderController* renderController);
+	void Send(string message, void* data);
 	virtual void Notify(string message, void* data) = 0;
 };
 

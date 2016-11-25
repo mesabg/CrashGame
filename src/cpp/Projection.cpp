@@ -5,10 +5,14 @@ void Projection::refresh(){
 }
 
 Projection::Projection(){
-
+	this->fieldOfView = 45.0f;
+	this->aspectRatio = 1440.0f/900.0f;
+	this->near = 1.0f;
+	this->far = 1000.0f;
+	this->refresh();
 }
 
-Projection::Projection(float fieldOfView, float aspectRatio, float near, float){
+Projection::Projection(float fieldOfView, float aspectRatio, float near, float far){
 	this->fieldOfView = fieldOfView;
 	this->aspectRatio = aspectRatio;
 	this->near = near;

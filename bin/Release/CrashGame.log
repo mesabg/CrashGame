@@ -1,8 +1,25 @@
-﻿  BoundingBox.cpp
-  Main.cpp
+﻿  ConcreteGameController.cpp
+  ConcreteRenderController.cpp
+  CreatorMD2.cpp
+  CreatorMD5.cpp
+  CreatorOBJ.cpp
+  CreatorOFF.cpp
+  Enemy.cpp
+  GameInterface.cpp
   MD2.cpp
+  MD5.cpp
+  Main.cpp
+  Model.cpp
+  ModelsCreator.cpp
+  OBJ.cpp
+  OFF.cpp
+  Object.cpp
+  Player.cpp
+  Stage.cpp
+  Texture.cpp
+  Transformation.cpp
   Generating Code...
-  .NETFramework,Version=v4.0.AssemblyAttributes.cpp
+SOIL.lib(SOIL.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:ICF' specification
   LINK : /LTCG specified but no code generation required; remove /LTCG from the link command line to improve linker performance
 GUI.obj : warning LNK4248: unresolved typeref token (01000015) for 'GLFWwindow'; image may not run
 ConcreteRenderController.obj : warning LNK4248: unresolved typeref token (01000015) for 'GLFWwindow'; image may not run
