@@ -28,6 +28,7 @@ OBJ::OBJ(ModelRoutesData* routes):Model(routes){
 			z = stod(leer, &sz);
 			vertex = new GLfloat[3];
 			vertex[0] = (GLfloat)x; vertex[1] = (GLfloat)y; vertex[2] = (GLfloat)z;
+			this->vertexesLenght++;
 			if ((int)this->vertexes.size() == 0) {
 				//this->boundingBox->initVertexBox(vertex);
 				this->max = vertex[0];

@@ -20,12 +20,14 @@ protected:
 	/*Array to VBO*/
 	GLfloat* glVBO; /*v1x v1y v1z vn1x vn1y vn1z vt1 vt2 vt3*/
 	GLuint glVBO_dir;
+	GLuint glVBO_indexes;
 
 	/*Arrays to load a model*/
 	vector<GLfloat*> vertexes;
 	vector<GLfloat*> normal;
 	vector<GLfloat*> texture_;
 	GLfloat max, min;
+	int vertexesLenght;
 
 	/*Structures*/
 	Sound* sound;
