@@ -17,7 +17,6 @@
 using namespace std;
 
 using std::string;
-
 class Texture {
 private:
 	string route;
@@ -25,12 +24,8 @@ private:
 public:
 	Texture(string route);
 	~Texture();
+	GLuint getID();
 };
-
-
-extern "C" {
-	#include <stb-master\stb_image.h>
-}
 
 #endif
 

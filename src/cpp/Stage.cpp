@@ -19,7 +19,7 @@ Stage::Stage(RenderController* renderController):RenderColleague(renderControlle
 	for (int i = 0; i < amountOfObjects; i++) this->entities.push_back(Object::Instance(NULL, NULL, NULL, i));
 
 	/*Init Uniforms ID*/
-	this->ID = new vector<GLint>(7, 0);
+	this->ID = new vector<GLint>(8, 0);
 }
 
 Stage::~Stage(){
@@ -75,6 +75,9 @@ void Stage::render(){
 
 	this->ID->at(6) = glGetUniformLocation(this->shader_id, "u_projMat");
 	glUniformMatrix4fv(this->ID->at(6), 1, GL_FALSE, &(this->projection->getMatrix())[0][0]);
+
+	this->ID->at(7) = glGetUniformLocation(this->shader_id, "u_normalMat");
+	glUniformMatrix4fv(this->ID->at(6), 1, GL_FALSE, &( glm::inverse( glm::transpose(this->camera->getMatrix())) )[0][0]);
 
 	/*Render all the entities*/
 	for (int i = 0; i < (int)this->entities.size(); i++)

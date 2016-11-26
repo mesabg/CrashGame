@@ -106,6 +106,8 @@ void Model::render(GLuint shader_id){
 	this->ID->at(3) = glGetUniformLocation(shader_id, "u_matShininess");
 	glUniform1f(this->ID->at(3), this->shininess);
 
+//Revisar
+
 	this->ID->at(4) = glGetUniformLocation(shader_id, "u_modelMat");
 	glUniformMatrix4fv(this->ID->at(4), 1, GL_FALSE, &(this->transformation->getTransformMatrix())[0][0]);
 
@@ -124,13 +126,20 @@ void Model::render(GLuint shader_id){
 	/*Rendering using VBO*/
 	/*Revisar http://pastebin.com/1BZJMG0V*/
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, this->glVBO_dir);
+	glBindTexture(GL_TEXTURE_2D, this->texture->getID());
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->glVBO_indexes);
 
+	/*Vertexes*/
 	glEnableVertexAttribArrayARB(0);
-	glVertexAttribPointerARB(0, 3, GL_FLOAT, GL_FALSE, 0 * sizeof(GLfloat), 0);
+	glVertexAttribPointerARB(0, 3, GL_FLOAT, GL_FALSE, 9*sizeof(GLfloat), 0 );
 
+	/*Normals*/
 	glEnableVertexAttribArrayARB(1);
-	glVertexAttribPointerARB(1, 3, GL_FLOAT, GL_FALSE, 0 * sizeof(GLfloat), 0);
+	glVertexAttribPointerARB(1, 3, GL_FLOAT, GL_FALSE, 9*sizeof(GLfloat), (void*)(3*sizeof(GLfloat)) );
+
+	/*Texture Coord*/
+	glEnableVertexAttribArrayARB(2);
+	glVertexAttribPointerARB(2, 3, GL_FLOAT, GL_FALSE, 9*sizeof(GLfloat), (void*)(6*sizeof(GLfloat)) );
 
 	/*http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-9-vbo-indexing/*/
 
@@ -139,9 +148,11 @@ void Model::render(GLuint shader_id){
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 
 	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	
+	glBindBufferARB(GL_ARRAY_BUFFER_ARB, 2);
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, 1);
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
-	
+	glBindTexture(GL_TEXTURE_2D, 0);
 
 	//glBindBufferARB(GL_ARRAY_BUFFER_ARB, this->glVBO_dir);
 
@@ -217,9 +228,9 @@ void Model::Inherit(Model * model) {
 }
 
 void Model::initGLDataBinding(){
-	delete this->glVBO;
-	this->glVBO = NULL;
-	vector <GLfloat> vertexes = {
+	//delete this->glVBO;
+	//this->glVBO = NULL;
+/*	vector <GLfloat> vertexes = {
 		// Positions      // Normals      // Positions
 		0.0f, 0.0f, 0.0f,
 		0.0f, 0.0f, 1.0f,
@@ -229,11 +240,11 @@ void Model::initGLDataBinding(){
 		1.0f, 0.0f, 1.0f,
 		1.0f, 1.0f, 0.0f,
 		1.0f, 1.0f, 1.0f  
-	};
+	};*/
 
 
 
-	vector <GLuint> indexes = {
+	/*vector <GLuint> indexes = {
 		// Indexes
 		0, 6, 4,
 		0, 2, 6,
@@ -247,21 +258,22 @@ void Model::initGLDataBinding(){
 		0, 5, 1,
 		1, 5, 7,
 		1, 7, 3
-	};
+	}; */
 
+	auto length = end(this->glVBO) - begin(this->glVBO);
 	glGenBuffersARB(1, &(this->glVBO_dir));											// create a vbo
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, this->glVBO_dir);										// activate vbo id to use
-	glBufferDataARB(GL_ARRAY_BUFFER_ARB, vertexes.size()*sizeof(GLfloat), &(vertexes[0]), GL_STATIC_DRAW_ARB);	// upload data to video card
+	glBufferDataARB(GL_ARRAY_BUFFER_ARB, ( (unsigned int) length)*sizeof(GLfloat), &(this->glVBO[0]), GL_STATIC_DRAW_ARB);	// upload data to video card
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
 
-	glGenBuffers(1, &(this->glVBO_indexes));
+/*	glGenBuffers(1, &(this->glVBO_indexes));
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->glVBO_indexes);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexes.size()*sizeof(GLuint), &(indexes[0]), GL_STATIC_DRAW);
-	glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER, 0);
+	glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER, 0);*/
 
 
-	vertexes.~vector();
-	indexes.~vector();
+	//vertexes.~vector();
+	//indexes.~vector();
 	delete this->glVBO;
 
 	/*Enable Backface Culling and Z Buffer*/
@@ -273,4 +285,5 @@ void Model::initGLDataBinding(){
 	glEnable(GL_LIGHT0);*/
 	/*glEnable(GL_TEXTURE_2D);
 	glEnable(GL_TEXTURE0);*/
+	glActiveTexture(GL_TEXTURE0);
 }

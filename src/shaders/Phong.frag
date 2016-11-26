@@ -16,6 +16,8 @@ in vec3 o_toLight;
 in vec3 o_toCamera;
 in vec3 texture;
 
+uniform sampler2D ourTexture;
+
 out vec4 resultingColor;
 
 // returns intensity of reflected ambient lighting
@@ -62,8 +64,10 @@ void main(void)
    vec3 Iamb =  ambientLighting();
    vec3 Idif = diffuseLighting(N, L);
    vec3 Ispe = specularLighting(N, L, V);
+//http://prntscr.com/dc7335
+//http://www.tomdalling.com/blog/modern-opengl/02-textures/
 
    // combination of all components and diffuse color of the object
-   resultingColor.xyz = (Iamb + Idif + Ispe);
+   resultingColor.xyz = texture2D(ourTexture ,vec2(texture.x,texture.y));
    resultingColor.a = 1.0;
 } 

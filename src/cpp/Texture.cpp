@@ -29,3 +29,7 @@ Texture::Texture(string route){
 Texture::~Texture(){
 	this->route.~basic_string();
 }
+
+Texture::getID(){
+	return this->m_texture;
+}
