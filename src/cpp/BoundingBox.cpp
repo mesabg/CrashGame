@@ -2,7 +2,7 @@
 #include <iostream>
 
 BoundingBox::BoundingBox() {
-	//this->color = RGB_::make_rgb(0.8f, 0.0f, 0.0f);
+
 }
 
 BoundingBox::~BoundingBox() {}
