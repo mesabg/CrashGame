@@ -74,7 +74,6 @@ ConcreteGameController::ConcreteGameController(){
 			"../models/objects/Nitro/nitro.mp3"
 		}
 	));*/
-
 	//ause");
 	for (int i = 0; i < amountOfPlayers; i++) this->players.push_back(Player::Instance(this, playersRoutes[i], new vector<int>({ 100, 5 }), i));
 	//for (int i = 0; i < amountOfEnemies; i++) this->enemies.push_back(Enemy::Instance(this, enemiesRoutes[i], new vector<int>({ 100, 5 }), i));

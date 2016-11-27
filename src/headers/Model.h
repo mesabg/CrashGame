@@ -58,6 +58,11 @@ public:
 	Transformation* getTransformation();
 	BoundingBox* getBoundingBox();
 	Texture* getTexture();
+	GLuint getGLVBO_dir();
+	GLuint getGLVBO_indexes_dir();
+	vector<GLuint> getGLVBO_indexes();
+	GLuint getGLVBO_indexes_size();
+	float getShininess();
 
 	/*Setters*/
 	void setSound(Sound* sound);

@@ -13,6 +13,7 @@ Stage::Stage(RenderController* renderController):RenderColleague(renderControlle
 	this->camera = new Camera();
 	this->projection = new Projection();
 
+	//this->entities.push_back(Player::Instance(NULL, NULL, NULL, 0));
 	/*Init entities*/
 	for (int i = 0; i < amountOfPlayers; i++) this->entities.push_back(Player::Instance(NULL, NULL, NULL, i));
 	for (int i = 0; i < amountOfEnemies; i++) this->entities.push_back(Enemy::Instance(NULL, NULL, NULL, i));

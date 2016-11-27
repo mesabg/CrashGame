@@ -5,7 +5,6 @@
 #include <string>
 #include <glew\glew.h>
 //#include <stb-master\stb.h>
-
 /*#include <stb-master\stb.h>
 #include <stb-master\stb_c_lexer.h>
 #include <sdl2\SDL.h>
@@ -13,6 +12,9 @@
 #include <sdl2\SDL_main.h>*/
 #include <soil\SOIL.h>
 #include <iostream>
+#include <stdio.h>
+#include <sdl2\SDL.h>
+#include <sdl2\SDL_image.h>
 
 using namespace std;
 
@@ -21,10 +23,12 @@ class Texture {
 private:
 	string route;
 	GLuint m_texture;
+	int num_texture;
 public:
 	Texture(string route);
 	~Texture();
 	GLuint getID();
+	SDL_Surface* loadImage(const char *filename, bool alpha);
 };
 
 #endif

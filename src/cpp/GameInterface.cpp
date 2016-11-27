@@ -1,6 +1,6 @@
 #include <GameInterface.h>
 
-Entity::Entity(GameController * gameController, ModelRoutesData* routes, vector<int> *contextData):Model(routes){
+Entity::Entity(GameController * gameController, ModelRoutesData* routes, vector<int> *contextData):Model(){
 	this->gameController = gameController;
 	Model::Inherit(CreateModel(routes));
 }

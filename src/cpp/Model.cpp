@@ -14,8 +14,6 @@ Model::Model(){
 	this->material = new Light();
 	this->shininess = 4.0f;
 
-	/*Init amount of vertexes*/
-	this->vertexesLenght = 0;
 }
 
 Model::Model(ModelRoutesData* routes) {
@@ -34,8 +32,6 @@ Model::Model(ModelRoutesData* routes) {
 	this->material = new Light( vec3(0.0f, 0.0f, 0.0f), vec3(0.5f, 0.3f, 0.2f), vec3(0.2f, 0.1f, 0.2f), vec3(0.25f, 0.0f, 0.2f) );
 	this->shininess = 10.0f;
 
-	/*Init amount of vertexes*/
-	this->vertexesLenght = 0;
 }
 
 Model::~Model(){
@@ -75,8 +71,10 @@ void Model::render(GLuint shader_id){
 
 	/*Rendering using VBO*/
 	/*Revisar http://pastebin.com/1BZJMG0V*/
+	glEnable(GL_TEXTURE_2D);
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, this->glVBO_dir);
-	//glBindTexture(GL_TEXTURE_2D, this->texture->getID());
+	glBindTexture(GL_TEXTURE_2D, this->texture->getID());
+	  
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->glVBO_indexes_dir);
 
 	/*Vertexes*/
@@ -88,15 +86,25 @@ void Model::render(GLuint shader_id){
 	glVertexAttribPointerARB(1, 3, GL_FLOAT, GL_FALSE, 9*sizeof(GLfloat), (void*)(6*sizeof(GLfloat)) );
 
 	/*Texture Coord*/
-	//glEnableVertexAttribArrayARB(2);
-	//glVertexAttribPointerARB(2, 3, GL_FLOAT, GL_FALSE, 9*sizeof(GLfloat), (void*)(6*sizeof(GLfloat)) );
+	glEnableVertexAttribArrayARB(2);
+	glVertexAttribPointerARB(2, 3, GL_FLOAT, GL_FALSE, 9*sizeof(GLfloat), (void*)(3*sizeof(GLfloat)) );
 
 	/*http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-9-vbo-indexing/*/
+
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+	glActiveTexture(GL_TEXTURE0);
+	glUniform1i(this->texture->getID(), 0);
+
 
 	//glDrawArrays(GL_TRIANGLES, 0, 3);
 	glDrawElements(GL_TRIANGLES, this->glVBO_indexes_size, GL_UNSIGNED_INT, (void*)0);
 	//glDrawArrays(GL_TRIANGLES, 0, 3);
 
+	
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	
 	//glBindBufferARB(GL_ARRAY_BUFFER_ARB, 2);
@@ -156,6 +164,26 @@ Texture * Model::getTexture(){
 	return this->texture;
 }
 
+GLuint Model::getGLVBO_dir(){
+	return this->glVBO_dir;
+}
+
+GLuint Model::getGLVBO_indexes_dir(){
+	return this->glVBO_indexes_dir;
+}
+
+vector<GLuint> Model::getGLVBO_indexes(){
+	return this->glVBO_indexes;
+}
+
+GLuint Model::getGLVBO_indexes_size(){
+	return this->glVBO_indexes_size;
+}
+
+float Model::getShininess(){
+	return this->shininess;
+}
+
 void Model::setSound(Sound * sound){
 	this->sound = sound;
 }
@@ -175,11 +203,16 @@ void Model::Inherit(Model * model) {
 	this->transformation = model->getTransformation();
 	this->texture = model->getTexture();
 	this->boundingBox = model->getBoundingBox();
+	this->glVBO_dir = model->getGLVBO_dir();
+	this->glVBO_indexes_dir = model->getGLVBO_indexes_dir();
+	this->glVBO_indexes = model->getGLVBO_indexes();
+	this->glVBO_indexes_size = model->getGLVBO_indexes_size();
+	this->shininess = model->getShininess();
 }
 
 void Model::initGLDataBinding(){
 
-	for (int i = 0; i < (this->glVBO.size()/9); i++)
+	for (int i = 0; i < ((int)this->glVBO.size()/9); i++)
 		this->glVBO_indexes.push_back( (GLuint) i);
 
 	this->glVBO_indexes_size = this->glVBO_indexes.size();
@@ -206,8 +239,8 @@ void Model::initGLDataBinding(){
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	/*glEnable(GL_TEXTURE_2D);
-	glEnable(GL_TEXTURE0);*/
-	//glActiveTexture(GL_TEXTURE0);
+	glEnable(GL_TEXTURE0);
+	glActiveTexture(GL_TEXTURE0);*/
 }
 
 void split(const std::string &s, char delim, std::vector<std::string> &elems) {
