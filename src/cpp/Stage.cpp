@@ -9,7 +9,7 @@ Stage::Stage(RenderController* renderController):RenderColleague(renderControlle
 	/*Init local structures*/
 	this->sound = new Sound({"", ""});
 	this->skyBox = new SkyBox();
-	this->light = new Light();
+	this->light = new Light( vec3(0.0f, 0.0f, -10.0f), vec3(1.0f, 0.1f, 0.7f), vec3(0.8f, 0.2f, 0.2f), vec3(0.3f, 0.0f, 0.2f) );
 	this->camera = new Camera();
 	this->projection = new Projection();
 
@@ -19,7 +19,7 @@ Stage::Stage(RenderController* renderController):RenderColleague(renderControlle
 	for (int i = 0; i < amountOfObjects; i++) this->entities.push_back(Object::Instance(NULL, NULL, NULL, i));
 
 	/*Init Uniforms ID*/
-	this->ID = new vector<GLint>(8, 0);
+	this->ID = new vector<GLint>(10, 0);
 }
 
 Stage::~Stage(){
@@ -77,7 +77,7 @@ void Stage::render(){
 	glUniformMatrix4fv(this->ID->at(6), 1, GL_FALSE, &(this->projection->getMatrix())[0][0]);
 
 	this->ID->at(7) = glGetUniformLocation(this->shader_id, "u_normalMat");
-	glUniformMatrix4fv(this->ID->at(6), 1, GL_FALSE, &( glm::inverse( glm::transpose(this->camera->getMatrix())) )[0][0]);
+	glUniformMatrix4fv(this->ID->at(7), 1, GL_FALSE, &(glm::inverse( glm::transpose(this->camera->getMatrix())))[0][0]);
 
 	/*Render all the entities*/
 	for (int i = 0; i < (int)this->entities.size(); i++)

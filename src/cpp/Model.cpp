@@ -1,58 +1,8 @@
 #include <Model.h>
 #include <iostream>
-/*
-Model::Model(Mediator* mediator) :Colleague(mediator) {
-	this->T = glm::mat4(1.0f);
-	this->R = glm::mat4(1.0f);
-	this->S = glm::mat4(1.0f);
-	this->TInverse = glm::mat4(1.0f);
-
-	this->T[0][3] = 0.0f;
-	this->T[1][3] = 0.0f;
-	this->T[2][3] = 0.0f;
-
-	this->S[0][0] = 4.0f;
-	this->S[1][1] = 4.0f;
-	this->S[2][2] = 4.0f;
-	this->Rotation[0] = 0.0f;
-	this->Rotation[1] = 0.0f;
-	this->Rotation[2] = 0.0f;
-	this->Rotation[3] = 1.0f;
-
-	this->boundingBoxColor = RGB_::make_rgb(0.1f);
-	this->borderColor = RGB_::make_rgb(1.0f);
-	this->fillColor = RGB_::make_rgb(0.5f);
-	this->normalsColor = RGB_::make_rgb(0.8f, 0.0f, 0.0f);
-	this->lightAmbientIntensity = RGB_::make_rgb(0.5f, 0.5f, 0.0f);
-	this->lightDiffuseIntensity = RGB_::make_rgb(1.0f, 0.5f, 0.0f);
-	this->lightSpecularIntensity = RGB_::make_rgb(0.0f, 1.0f, 0.0f);
-	this->matAmbientReflectances = RGB_::make_rgb(0.2f, 0.5f, 0.0f);
-	this->matDiffuseReflectances = RGB_::make_rgb(1.0f, 0.5f, 0.0f);
-	this->matSpecularReflectances = RGB_::make_rgb(0.3f, 0.5f, 0.5f);
-	this->matShininess = 50.0f;
-
-	this->localBoundingBox = new BoundingBox();
-
-	this->mode = 1;
-	this->displayNormal = this->displayBackfaceCulling = false;
-	this->displayBoundingBox = false;
-
-	this->flatShading = false;
-	this->gouraudShading = false;
-	this->phongShading = false;
-
-	this->shadingMode = false;
-
-	this->speculateIntensity = 1.0f;
-	this->diffuseIntensity = 1.0f;
-
-	this->projection = glm::perspective(44.766655555f, 1440.0f / 900.0f, 1.0f, 1000.0f);// Hay que settearlos por el valor real !! reshape y todo el rollo NO CAMBIAR ESA CONSTANTE
-	this->modelView = glm::lookAt(glm::vec3(3.0f, 3.0f, 10.0f) , glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-	this->normalMatrix = glm::transpose(glm::inverse(this->TInverse*this->R*this->S));
-}*/
 
 Model::Model(){
-	this->glVBO = (GLfloat*)malloc(sizeof(GLfloat));
+	//this->glVBO = (GLfloat*)malloc(sizeof(GLfloat));
 
 	/*Init Uniforms ID*/
 	this->ID = new vector<GLint>(8, 0);
@@ -70,7 +20,7 @@ Model::Model(){
 
 Model::Model(ModelRoutesData* routes) {
 	/*Init data structures*/
-	this->glVBO = (GLfloat*)malloc(sizeof(GLfloat));
+	//this->glVBO = (GLfloat*)malloc(sizeof(GLfloat));
 	this->texture = new Texture(routes->texture);
 	this->sound = new Sound(routes->sounds);
 
@@ -81,8 +31,8 @@ Model::Model(ModelRoutesData* routes) {
 	this->transformation = new Transformation();
 
 	/*Init Material Colors*/
-	this->material = new Light();
-	this->shininess = 4.0f;
+	this->material = new Light( vec3(0.0f, 0.0f, 0.0f), vec3(0.5f, 0.3f, 0.2f), vec3(0.2f, 0.1f, 0.2f), vec3(0.25f, 0.0f, 0.2f) );
+	this->shininess = 10.0f;
 
 	/*Init amount of vertexes*/
 	this->vertexesLenght = 0;
@@ -126,8 +76,8 @@ void Model::render(GLuint shader_id){
 	/*Rendering using VBO*/
 	/*Revisar http://pastebin.com/1BZJMG0V*/
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, this->glVBO_dir);
-	glBindTexture(GL_TEXTURE_2D, this->texture->getID());
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->glVBO_indexes);
+	//glBindTexture(GL_TEXTURE_2D, this->texture->getID());
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->glVBO_indexes_dir);
 
 	/*Vertexes*/
 	glEnableVertexAttribArrayARB(0);
@@ -135,24 +85,24 @@ void Model::render(GLuint shader_id){
 
 	/*Normals*/
 	glEnableVertexAttribArrayARB(1);
-	glVertexAttribPointerARB(1, 3, GL_FLOAT, GL_FALSE, 9*sizeof(GLfloat), (void*)(3*sizeof(GLfloat)) );
+	glVertexAttribPointerARB(1, 3, GL_FLOAT, GL_FALSE, 9*sizeof(GLfloat), (void*)(6*sizeof(GLfloat)) );
 
 	/*Texture Coord*/
-	glEnableVertexAttribArrayARB(2);
-	glVertexAttribPointerARB(2, 3, GL_FLOAT, GL_FALSE, 9*sizeof(GLfloat), (void*)(6*sizeof(GLfloat)) );
+	//glEnableVertexAttribArrayARB(2);
+	//glVertexAttribPointerARB(2, 3, GL_FLOAT, GL_FALSE, 9*sizeof(GLfloat), (void*)(6*sizeof(GLfloat)) );
 
 	/*http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-9-vbo-indexing/*/
 
 	//glDrawArrays(GL_TRIANGLES, 0, 3);
-	//glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, (void*)0);
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawElements(GL_TRIANGLES, this->glVBO_indexes_size, GL_UNSIGNED_INT, (void*)0);
+	//glDrawArrays(GL_TRIANGLES, 0, 3);
 
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	
-	glBindBufferARB(GL_ARRAY_BUFFER_ARB, 2);
-	glBindBufferARB(GL_ARRAY_BUFFER_ARB, 1);
+	//glBindBufferARB(GL_ARRAY_BUFFER_ARB, 2);
+	//glBindBufferARB(GL_ARRAY_BUFFER_ARB, 1);
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
-	glBindTexture(GL_TEXTURE_2D, 0);
+	//glBindTexture(GL_TEXTURE_2D, 0);
 
 	//glBindBufferARB(GL_ARRAY_BUFFER_ARB, this->glVBO_dir);
 
@@ -186,7 +136,7 @@ void Model::render(GLuint shader_id){
 	//glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
 }
 
-GLfloat * Model::getGLVBO(){
+vector<GLfloat> Model::getGLVBO(){
 	return this->glVBO;
 }
 
@@ -228,62 +178,43 @@ void Model::Inherit(Model * model) {
 }
 
 void Model::initGLDataBinding(){
-	//delete this->glVBO;
-	//this->glVBO = NULL;
-/*	vector <GLfloat> vertexes = {
-		// Positions      // Normals      // Positions
-		0.0f, 0.0f, 0.0f,
-		0.0f, 0.0f, 1.0f,
-		0.0f, 1.0f, 0.0f,
-		0.0f, 1.0f, 1.0f,
-		1.0f, 0.0f, 0.0f,
-		1.0f, 0.0f, 1.0f,
-		1.0f, 1.0f, 0.0f,
-		1.0f, 1.0f, 1.0f  
-	};*/
 
+	for (int i = 0; i < (this->glVBO.size()/9); i++)
+		this->glVBO_indexes.push_back( (GLuint) i);
 
+	this->glVBO_indexes_size = this->glVBO_indexes.size();
 
-	/*vector <GLuint> indexes = {
-		// Indexes
-		0, 6, 4,
-		0, 2, 6,
-		0, 3, 4,
-		0, 1, 3,
-		2, 7, 6,
-		2, 3, 7,
-		4, 6, 7,
-		4, 7, 5,
-		0, 4, 5,
-		0, 5, 1,
-		1, 5, 7,
-		1, 7, 3
-	}; */
-
-	auto length = end(this->glVBO) - begin(this->glVBO);
 	glGenBuffersARB(1, &(this->glVBO_dir));											// create a vbo
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, this->glVBO_dir);										// activate vbo id to use
-	glBufferDataARB(GL_ARRAY_BUFFER_ARB, ( (unsigned int) length)*sizeof(GLfloat), &(this->glVBO[0]), GL_STATIC_DRAW_ARB);	// upload data to video card
+	glBufferDataARB(GL_ARRAY_BUFFER_ARB, (this->glVBO.size())*sizeof(GLfloat), &(this->glVBO[0]), GL_STATIC_DRAW_ARB);	// upload data to video card
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
 
-/*	glGenBuffers(1, &(this->glVBO_indexes));
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->glVBO_indexes);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexes.size()*sizeof(GLuint), &(indexes[0]), GL_STATIC_DRAW);
-	glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER, 0);*/
+	glGenBuffers(1, &(this->glVBO_indexes_dir));
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->glVBO_indexes_dir);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, this->glVBO_indexes.size()*sizeof(GLuint), &(this->glVBO_indexes[0]), GL_STATIC_DRAW);
+	glBindBufferARB(GL_ELEMENT_ARRAY_BUFFER, 0);
 
-
-	//vertexes.~vector();
-	//indexes.~vector();
-	delete this->glVBO;
+	this->glVBO.~vector();
+	this->glVBO_indexes.~vector();
+	System::GC::Collect();
 
 	/*Enable Backface Culling and Z Buffer*/
 	glEnable(GL_DEPTH_TEST);
-	/*glEnable(GL_NORMALIZE);
+	glEnable(GL_NORMALIZE);
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);*/
+	glEnable(GL_LIGHT0);
 	/*glEnable(GL_TEXTURE_2D);
 	glEnable(GL_TEXTURE0);*/
-	glActiveTexture(GL_TEXTURE0);
+	//glActiveTexture(GL_TEXTURE0);
+}
+
+void split(const std::string &s, char delim, std::vector<std::string> &elems) {
+	std::stringstream ss;
+	ss.str(s);
+	std::string item;
+	while (std::getline(ss, item, delim)) {
+		elems.push_back(item);
+	}
 }

@@ -38,8 +38,8 @@ void ConcreteRenderController::initGLSLPrograms(){
 	/*Initialize Shaders*/
 	/*Phong illumination Shader*/
 	this->illuminationProgram = new CGLSLProgram(this);
-	this->illuminationProgram->loadShader("../src/shaders/Flat.vert", CGLSLProgram::VERTEX);
-	this->illuminationProgram->loadShader("../src/shaders/Flat.frag", CGLSLProgram::FRAGMENT);
+	this->illuminationProgram->loadShader("../src/shaders/Phong.vert", CGLSLProgram::VERTEX);
+	this->illuminationProgram->loadShader("../src/shaders/Phong.frag", CGLSLProgram::FRAGMENT);
 	this->illuminationProgram->create_link();
 }
 

@@ -1,4 +1,7 @@
 ﻿  Model.cpp
+..\src\cpp\Model.cpp(182): warning C4018: '<': signed/unsigned mismatch
+  Stage.cpp
+  Generating Code...
   BoundingBox.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
 SOIL.lib(SOIL.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
 GUI.obj : warning LNK4248: unresolved typeref token (01000015) for 'GLFWwindow'; image may not run

@@ -4,7 +4,6 @@ Texture::Texture(string route){
 	this->route = route;
 	
 	int width, height;
-	char* file = "crash.png";
 	
 	//if(image == NULL)
 		//cout << "Texture loading failed: " << route << endl;
@@ -30,6 +29,6 @@ Texture::~Texture(){
 	this->route.~basic_string();
 }
 
-Texture::getID(){
+GLuint Texture::getID(){
 	return this->m_texture;
 }
