@@ -1,11 +1,14 @@
-﻿  Model.cpp
-..\src\cpp\Model.cpp(182): warning C4018: '<': signed/unsigned mismatch
-  Stage.cpp
-  Generating Code...
-  BoundingBox.obj : /DEBUG:FASTLINK is not supported when managed code is present; restarting link with /DEBUG:FULL
-SOIL.lib(SOIL.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
-GUI.obj : warning LNK4248: unresolved typeref token (01000015) for 'GLFWwindow'; image may not run
-ConcreteRenderController.obj : warning LNK4248: unresolved typeref token (01000015) for 'GLFWwindow'; image may not run
-GUI.obj : warning LNK4248: unresolved typeref token (01000019) for 'GLFWmonitor'; image may not run
-  CrashGame.vcxproj -> C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\bin\Debug\CrashGame.exe
-  CrashGame.vcxproj -> C:\Users\Equipo\Documents\Semestres UCV - Pregrado - Lic. Computación\6to Semestre\Introduccion a la Computación Gráfica\Proyecto\CrashGame\bin\Debug\CrashGame.pdb (Partial PDB)
+﻿  CreatorMD2.cpp
+  CreatorMD5.cpp
+  CreatorOBJ.cpp
+  CreatorOFF.cpp
+  Enemy.cpp
+  GameInterface.cpp
+  Main.cpp
+  MD2.cpp
+  MD5.cpp
+  Model.cpp
+  ModelsCreator.cpp
+  OBJ.cpp
+  Generando código...
+d:\universidad\projects\crashgame\src\cpp\main.cpp(51): error C4716: 'SDL_main': debe devolver un valor
