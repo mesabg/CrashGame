@@ -25,14 +25,13 @@ protected:
 	vector<GLuint> glVBO_indexes;
 	GLuint glVBO_indexes_size;
 
-
 	/*Arrays to load a model*/
 	vector<GLfloat*> vertexes;
 	vector<GLfloat*> normal;
 	vector<GLfloat*> texture_;
 	GLfloat max, min;
 	int vertexesLenght;
-
+	string Estado;
 	/*Structures*/
 	Sound* sound;
 	Transformation* transformation;
@@ -45,6 +44,10 @@ protected:
 
 	/*Uniforms IDs*/
 	vector<GLint> *ID;
+	
+	/*Direction Vector*/
+	vec3 direction;
+	
 	
 public:
 	Model();
@@ -63,17 +66,25 @@ public:
 	vector<GLuint> getGLVBO_indexes();
 	GLuint getGLVBO_indexes_size();
 	float getShininess();
+	string getEstado();
 
 	/*Setters*/
 	void setSound(Sound* sound);
 	void setTransformation(Transformation* transformation);
 	void setTexture(Texture* texture);
+	void setEstado(string message);
 
 	/*Inherit*/
 	void Inherit(Model* model);
 
 	/*Functions*/
 	void initGLDataBinding();
+	
+	
+
+
+	
+
 };
 
 

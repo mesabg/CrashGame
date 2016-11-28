@@ -101,18 +101,6 @@ void GUI::reshape(GLFWwindow *window, int width, int height) {
 
 	glViewport(0, 0, localGUI->gWidth, localGUI->gHeight);
 
-	/*Projection Matrix*/
-	/*glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluPerspective(45.0f, (float)localGUI->gWidth / (float)localGUI->gHeight, 1.0f, 1000.0f);*/
-	//localGUI->mProjMatrix = glm::perspective(45.0f, (float)localGUI->gWidth / (float)localGUI->gHeight, 1.0f, 1000.0f);
-
-	/*Model View Matrix*/
-	/*glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	gluLookAt(3.0f, 3.0f, 10.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);	*/
-	//localGUI->mModelViewMatrix = glm::translate(glm::mat4(), glm::vec3(3.0f, 3.0f, 10.0f));
-
 	localGUI->renderController->Send("Reshape", (void*)(new float[2]{ (float)localGUI->gWidth, (float)localGUI->gHeight }), localGUI);
 }
 
@@ -129,6 +117,36 @@ void GUI::mouseButton(GLFWwindow* window, int button, int action, int mods) {
 
 
 void GUI::keyInput(GLFWwindow * window, int key, int scancode, int action, int mods){
+	
+	if (action == GLFW_PRESS)
+	{
+		GUI* localGUI = GUI::Instance(NULL);
+		switch (key)
+		{
+		case GLFW_KEY_ESCAPE:
+			glfwSetWindowShouldClose(window, GL_TRUE);
+			break;
+		case GLFW_KEY_ARRIBA:
+			localGUI->renderController->Send("Arriba", NULL ,localGUI);
+			break;
+		case GLFW_KEY_ABAJO:
+			localGUI->renderController->Send("Abajo", NULL ,localGUI);
+			break;
+		case GLFW_KEY_IZQUIERDA:
+			localGUI->renderController->Send("Izquierda", NULL ,localGUI);
+			break;
+		case GLFW_KEY_DERECHA:
+			localGUI->renderController->Send("Derecha", NULL ,localGUI);
+			break;
+			
+		case GLFW_KEY_Z:
+		//Disparo
+			localGUI->renderController->Send("Disparo", (void*)("Disparo"),localGUI);
+			break;
+		
+		}
+	}
+	
 	//GUI *localUserInterface = GUI::Instance(NULL);
 	/*if (key == GLFW_KEY_SPACE)
 		localUserInterface->renderController->Send("Volver al principal", localUserInterface);*/

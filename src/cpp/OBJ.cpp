@@ -30,11 +30,11 @@ OBJ::OBJ(ModelRoutesData* routes):Model(routes){
 			vertex[0] = (GLfloat)x; vertex[1] = (GLfloat)y; vertex[2] = (GLfloat)z;
 			
 			if ((int)this->vertexes.size() == 0) {
-				//this->boundingBox->initVertexBox(vertex);
+				this->boundingBox->initVertexBox(vertex);
 				this->max = vertex[0];
 			}
 			this->vertexes.push_back(vertex);
-			////this->boundingBox->setVertexBox(vertex);
+			this->boundingBox->setVertexBox(vertex);
 
 			if (vertex[0] >= this->max) this->max = vertex[0];
 			if (vertex[1] >= this->max) this->max = vertex[1];
@@ -54,8 +54,9 @@ OBJ::OBJ(ModelRoutesData* routes):Model(routes){
 			x = stod(leer, &sz);
 			fe >> leer;
 			y = stod(leer, &sz);
-			fe >> leer;
-			z = stod(leer, &sz);
+			//fe >> leer;
+			//z = stod(leer, &sz);
+			z = 0.0f;
 			vertex = new GLfloat[3];
 			vertex[0] = (GLfloat)x; vertex[1] = (GLfloat)y; vertex[2] = (GLfloat)z;
 			this->texture_.push_back(vertex);

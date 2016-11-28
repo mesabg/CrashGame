@@ -3,88 +3,55 @@
 ConcreteGameController::ConcreteGameController(){
 	/*Create ModelRoutesData Array to load the models*/
 	vector<ModelRoutesData*> playersRoutes(amountOfPlayers, NULL);
-	//vector<ModelRoutesData*> enemiesRoutes(amountOfEnemies, NULL);
-	//vector<ModelRoutesData*> objectsRoutes(amountOfObjects, NULL);
+	vector<ModelRoutesData*> enemiesRoutes(amountOfEnemies, NULL);
+	vector<ModelRoutesData*> objectsRoutes(amountOfObjects, NULL);
 
 	/*Initializing Routes*/
 	/*Players Routes*/
-	//system("pause");
 	playersRoutes[0] = (new ModelRoutesData(
-		"../models/players/Crash/crash.obj",
-		"../models/players/Crash/crash.png",
+		"../models/players/Spaceship/spaceship.obj",
+		"../models/players/Spaceship/spaceship.png",
 		{
-			"../models/players/Crash/crash_step.mp3",
-			"../models/players/Crash/crash_punch.mp3",
-			"../models/players/Crash/crash_die.mp3"
+			"../models/Spaceship/Crash/spaceship_run.mp3",
+			"../models/Spaceship/Crash/spaceship_shoot.mp3",
+			"../models/Spaceship/Crash/spaceship_die.mp3"
 		}
 	));
 
 	/*Enemies Routes*/
-	/*enemiesRoutes.push_back(new ModelRoutesData(
-		"../models/enemies/common/CarnivorousPlant/carnivorousPlant.obj",
-		"../models/enemies/common/CarnivorousPlant/carnivorousPlant.png",
+	enemiesRoutes[0] = new ModelRoutesData(
+		"../models/enemies/common/Asteroid/Asteroid.obj",
+		"../models/enemies/common/Asteroid/Asteroid.png",
 		{
-			"../models/enemies/common/CarnivorousPlant/carnivorousPlant_step.mp3",
-			"../models/enemies/common/CarnivorousPlant/carnivorousPlant_punch.mp3",
-			"../models/enemies/common/CarnivorousPlant/carnivorousPlant_die.mp3"
+			"../models/enemies/common/Asteroid/asteroid_step.mp3",
+			"../models/enemies/common/Asteroid/asteroid_punch.mp3",
+			"../models/enemies/common/Asteroid/asteroid_die.mp3"
 		}
-	));
+	);
 
-	enemiesRoutes.push_back(new ModelRoutesData(
-		"../models/enemies/common/LabAssistant/labAssistant.obj",
-		"../models/enemies/common/LabAssistant/labAssistant.png",
-		{
-			"../models/enemies/common/LabAssistant/labAssistant_step.mp3",
-			"../models/enemies/common/LabAssistant/labAssistant_punch.mp3",
-			"../models/enemies/common/LabAssistant/labAssistant_die.mp3"
-		}
-	));
-
-	enemiesRoutes.push_back(new ModelRoutesData(
-		"../models/enemies/NGin/ngin.obj",
-		"../models/enemies/NGin/ngin.png",
-		{
-			"../models/enemies/NGin/ngin_step.mp3",
-			"../models/enemies/NGin/ngin_punch.mp3",
-			"../models/enemies/NGin/ngin_die.mp3"
-		}
-	));*/
 
 	/*Object Routes*/
-	/*objectsRoutes.push_back(new ModelRoutesData(
-		"../models/objects/Apple/apple.obj",
-		"../models/objects/Apple/apple.png",
+	objectsRoutes[0] = new ModelRoutesData(
+		"../models/objects/Bullet/bullet.obj",
+		"../models/objects/Bullet/bullet.png",
 		{
-			"../models/objects/Apple/apple.mp3"
+			"../models/objects/Bullet/bullet.mp3"
 		}
-	));
+	);
 
-	objectsRoutes.push_back(new ModelRoutesData(
-		"../models/objects/Checkpoint/checkpoint.obj",
-		"../models/objects/Checkpoint/checkpoint.png",
-		{
-			"../models/objects/Checkpoint/checkpoint.mp3"
-		}
-	));
-
-	objectsRoutes.push_back(new ModelRoutesData(
-		"../models/objects/Nitro/nitro.obj",
-		"../models/objects/Nitro/nitro.png",
-		{
-			"../models/objects/Nitro/nitro.mp3"
-		}
-	));*/
-	//ause");
+	/*Power/Lives*/
 	for (int i = 0; i < amountOfPlayers; i++) this->players.push_back(Player::Instance(this, playersRoutes[i], new vector<int>({ 100, 5 }), i));
-	//for (int i = 0; i < amountOfEnemies; i++) this->enemies.push_back(Enemy::Instance(this, enemiesRoutes[i], new vector<int>({ 100, 5 }), i));
-	//for (int i = 0; i < amountOfObjects; i++) this->objects.push_back(Object::Instance(this, objectsRoutes[i], new vector<int>({ 100, 5 }), i));
+	for (int i = 0; i < amountOfEnemies; i++) this->enemies.push_back(Enemy::Instance(this, enemiesRoutes[i], new vector<int>({ 20, 1 }), i));
+	for (int i = 0; i < amountOfObjects; i++) this->objects.push_back(Object::Instance(this, objectsRoutes[i], new vector<int>({ 0, 0 }), i));
 }
 
 ConcreteGameController::~ConcreteGameController(){
-
+/**/
 }
 
 void ConcreteGameController::Send(string message, void * data, Entity * entity){
-
+	if (message == "Arriba" || message == "Abajo" || message == "Izquierda" || message == "Derecha" || entity==this->players[0]){
+		this->players[0]->setEstado(message);
+	}
 }
 

@@ -7,6 +7,7 @@
 #include <GUI.h>
 #include <CGLSLProgram.h>
 #include <vector>
+#include <time.h>
 
 using std::vector;
 

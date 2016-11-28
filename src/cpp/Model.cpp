@@ -2,23 +2,11 @@
 #include <iostream>
 
 Model::Model(){
-	//this->glVBO = (GLfloat*)malloc(sizeof(GLfloat));
-
-	/*Init Uniforms ID*/
-	this->ID = new vector<GLint>(8, 0);
-
-	/*Init Tranformation*/
-	this->transformation = new Transformation();
-
-	/*Init Material Colors*/
-	this->material = new Light();
-	this->shininess = 4.0f;
-
+	/*Do not do anything*/
 }
 
 Model::Model(ModelRoutesData* routes) {
 	/*Init data structures*/
-	//this->glVBO = (GLfloat*)malloc(sizeof(GLfloat));
 	this->texture = new Texture(routes->texture);
 	this->sound = new Sound(routes->sounds);
 
@@ -31,7 +19,9 @@ Model::Model(ModelRoutesData* routes) {
 	/*Init Material Colors*/
 	this->material = new Light( vec3(0.0f, 0.0f, 0.0f), vec3(0.5f, 0.3f, 0.2f), vec3(0.2f, 0.1f, 0.2f), vec3(0.25f, 0.0f, 0.2f) );
 	this->shininess = 10.0f;
-
+	
+	/*Other Inits*/
+	this->Estado = "Normal";
 }
 
 Model::~Model(){
@@ -39,6 +29,19 @@ Model::~Model(){
 }
 
 void Model::render(GLuint shader_id){
+	
+		if(this->Estado == "Normal"){
+			this->transformation->addTraslationMatrix(0.0f,0.0f,0.2f);
+		}else if(this->Estado == "Arriba"){
+			this->transformation->addTraslationMatrix(0.0f,0.2f,0.2f);
+		}else if(this->Estado == "Abajo"){
+			this->transformation->addTraslationMatrix(0.0f,-0.2f,0.2f);
+		}else if(this->Estado == "Derecha"){
+			this->transformation->addTraslationMatrix(0.2f,0.0f,0.2f);
+		}else if(this->Estado == "Izquierda"){
+			this->transformation->addTraslationMatrix(-0.2f,0.0f,0.2f);
+		}
+		
 	/*Bind Uniforms*/
 	this->ID->at(0) = glGetUniformLocation(shader_id, "u_matAmbientReflectances");
 	glUniform3f(this->ID->at(0), this->material->getAmbient().r, this->material->getAmbient().g, this->material->getAmbient().b);
@@ -52,31 +55,14 @@ void Model::render(GLuint shader_id){
 	this->ID->at(3) = glGetUniformLocation(shader_id, "u_matShininess");
 	glUniform1f(this->ID->at(3), this->shininess);
 
-//Revisar
-
 	this->ID->at(4) = glGetUniformLocation(shader_id, "u_modelMat");
 	glUniformMatrix4fv(this->ID->at(4), 1, GL_FALSE, &(this->transformation->getTransformMatrix())[0][0]);
 
 	this->ID->at(5) = glGetUniformLocation(shader_id, "ourTexture");
 	glUniform1i(this->ID->at(5), 0);
-
-	/*this->ID->at(4) = glGetUniformLocation(shader_id, "u_TInverse_Mat");
-	glUniformMatrix4fv(this->ID->at(4), 1, GL_FALSE, glm::value_ptr(this->transformation->getTraslationInverseMatrix()));
-
-	this->ID->at(5) = glGetUniformLocation(shader_id, "u_T_Mat");
-	glUniformMatrix4fv(this->ID->at(5), 1, GL_FALSE, glm::value_ptr(this->transformation->getTraslationMatrix()));
-
-	this->ID->at(6) = glGetUniformLocation(shader_id, "u_S_Mat");
-	glUniformMatrix4fv(this->ID->at(6), 1, GL_FALSE, glm::value_ptr(this->transformation->getScaleMatrix()));
-
-	this->ID->at(7) = glGetUniformLocation(shader_id, "u_R_Mat");
-	glUniformMatrix4fv(this->ID->at(7), 1, GL_FALSE, glm::value_ptr(this->transformation->getRotationMatrix()));*/
-
-	/*Rendering using VBO*/
-	/*Revisar http://pastebin.com/1BZJMG0V*/
+	
 	glEnable(GL_TEXTURE_2D);
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, this->glVBO_dir);
-	//glBindTexture(GL_TEXTURE_2D, this->texture->getID());
 	  
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->glVBO_indexes_dir);
 
@@ -91,67 +77,14 @@ void Model::render(GLuint shader_id){
 	/*Normals*/
 	glEnableVertexAttribArrayARB(1);
 	glVertexAttribPointerARB(1, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(GLfloat), (void*)(6 * sizeof(GLfloat)));
-
-	/*http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-9-vbo-indexing/*/
-
-	/*glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);*/
-
-	//glActiveTexture(GL_TEXTURE0);
-	//glUniform1i(this->texture->getID(), 0);
 	glBindTexture(GL_TEXTURE_2D, this->texture->getID());
 	glUniform1i(glGetUniformLocation(shader_id, "ourTexture"), 0);
-
-	/*glActiveTexture(GL_TEXTURE0);
-	cout << this->texture->getID() << endl;
-	system("pause");*/
-	//glBindTexture(GL_TEXTURE_2D, this->texture->getID());
-	//glBindSampler(0, this->texture->getID());
-
-	//glDrawArrays(GL_TRIANGLES, 0, 3);
+	
 	glDrawElements(GL_TRIANGLES, this->glVBO_indexes_size, GL_UNSIGNED_INT, (void*)0);
-	//glDrawArrays(GL_TRIANGLES, 0, 3);
-
-	//glBindBuffer(GL_TEXTURE_2D, 0);
+	
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-	
-	//glBindBufferARB(GL_ARRAY_BUFFER_ARB, 2);
-	//glBindBufferARB(GL_ARRAY_BUFFER_ARB, 1);
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
-	//glBindTexture(GL_TEXTURE_2D, 0);
 
-	//glBindBufferARB(GL_ARRAY_BUFFER_ARB, this->glVBO_dir);
-
-
-	//glEnableClientState(GL_VERTEX_ARRAY);
-	//glEnableClientState(GL_NORMAL_ARRAY);
-	//glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-
-	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(GLfloat), 0);
-
-	//glVertexPointer(3, GL_FLOAT, 9*sizeof(GLfloat), 0);
-	//glNormalPointer(GL_FLOAT, 9*sizeof(GLfloat), (void*)(3*sizeof(GLfloat)) );
-	//glTexCoordPointer( 3, GL_FLOAT, 9 * sizeof(GLfloat), (void*)(6 * sizeof(GLfloat)) );
-
-	
-	//glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
-	//glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
-
-	//glEnableVertexAttribArray(0);
-	//glEnableVertexAttribArray(1);
-	//glEnableVertexAttribArray(2);
-
-	//glDisableVertexAttribArray(2);
-	//glDisableVertexAttribArray(1);
-	//glDisableVertexAttribArray(0);
-
-	//glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	//glDisableClientState(GL_NORMAL_ARRAY);
-	//glDisableClientState(GL_VERTEX_ARRAY);
-
-	//glBindBufferARB(GL_ARRAY_BUFFER_ARB, 0);
 }
 
 vector<GLfloat> Model::getGLVBO(){
@@ -239,7 +172,6 @@ void Model::initGLDataBinding(){
 
 	this->glVBO.~vector();
 	this->glVBO_indexes.~vector();
-	System::GC::Collect();
 
 	/*Enable Backface Culling and Z Buffer*/
 	glEnable(GL_DEPTH_TEST);
@@ -251,6 +183,7 @@ void Model::initGLDataBinding(){
 	/*glEnable(GL_TEXTURE_2D);
 	glEnable(GL_TEXTURE0);
 	glActiveTexture(GL_TEXTURE0);*/
+	System::GC::Collect();
 }
 
 void split(const std::string &s, char delim, std::vector<std::string> &elems) {
@@ -261,3 +194,13 @@ void split(const std::string &s, char delim, std::vector<std::string> &elems) {
 		elems.push_back(item);
 	}
 }
+
+
+void setEstado(string message){
+	this->Estado = message;
+}
+
+string getEstado(){
+	return this->Estado;
+}
+

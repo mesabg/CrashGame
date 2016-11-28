@@ -9,28 +9,24 @@
 #include <glfw3.h>
 
 using std::vector;
+using glm::vec3;
 
 class BoundingBox
 {
 private:
-	/*vector<Vertex*> vertexes;
-	Vertex *min, *max;
-	RGB_ color;
-	glm::vec3 center, center2;*/
+	vec3 min, max, center;
 public:
 	BoundingBox();
 	~BoundingBox();
-	/*void initVertexBox(Vertex* vertex);
-	void setVertexBox(Vertex* vertex);
-	void setColor(float r, float g, float b);
-	RGB_ getColor();
-	void display(glm::mat4x4 &TInverse, glm::mat4x4 &T, glm::mat4x4 &R, glm::mat4x4 &S);
-	void setCenter(glm::mat4x4 &TInverse, glm::mat4x4 &T, glm::mat4x4 &R, glm::mat4x4 &S);
-	void escalar(double max);
-	glm::tvec4<GLdouble> transformVector(glm::mat4x4 &TInverse, glm::mat4x4 &T, glm::mat4x4 &R, glm::mat4x4 &S, Vertex * vector);
-	glm::vec3 getCenter_(glm::mat4x4 &TInverse, glm::mat4x4 &T, glm::mat4x4 &R, glm::mat4x4 &S);
-	glm::vec3 getCenter();
-	glm::vec3 getCenter2();*/
+	
+	/*Functions*/
+	void initVertexBox(vec3 vertex);
+	void setVertexBox(vec3 vertex);
+	
+	/*Getters*/
+	vec3 getCenter();
+	vec3 getMin();
+	vec3 getMax();
 };
 
 #endif

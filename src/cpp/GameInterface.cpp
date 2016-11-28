@@ -2,6 +2,8 @@
 
 Entity::Entity(GameController * gameController, ModelRoutesData* routes, vector<int> *contextData):Model(){
 	this->gameController = gameController;
+	this->power = contextData->at(0);
+	this->lives = contextData->at(1);
 	Model::Inherit(CreateModel(routes));
 }
 

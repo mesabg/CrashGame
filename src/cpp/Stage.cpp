@@ -51,7 +51,10 @@ void Stage::Notify(string message, void* data){
 	else if (message == "width/height") {
 		this->width = ((float*)data)[0];
 		this->height = ((float*)data)[1];
-	}
+	}else if(message == "Arriba" || message == "Abajo" || message == "Izquierda" || message == "Derecha")
+		this->entities[0]->Send(message, NULL);
+	else if(message == "Disparo")
+		this->stage->Notify("Disparo",NULL);
 }
 
 void Stage::render(){
@@ -81,6 +84,23 @@ void Stage::render(){
 	glUniformMatrix4fv(this->ID->at(7), 1, GL_FALSE, &(glm::inverse( glm::transpose(this->camera->getMatrix())))[0][0]);
 
 	/*Render all the entities*/
+	/*
+	t1 ->player
+	t1, t2, t3 -> Asteroides
+	t1, t2 -> Bala
+		
+		for (int i = 0; i < amountOfPlayers; i++)
+			this->entities[i]->setTransformation(ti);
+			this->entities[i]->render(this->shader_id);
+	
+		for (int i = 0; i < amountOfPlayers; i++)
+			this->entities[i]->setTransformation(ti);
+			this->entities[i]->render(this->shader_id);
+			
+		for (int i = 0; i < amountOfPlayers; i++)
+			this->entities[i]->setTransformation(ti);
+			this->entities[i]->render(this->shader_id);
+	*/
 	for (int i = 0; i < (int)this->entities.size(); i++)
 		this->entities[i]->render(this->shader_id);
 }

@@ -19,7 +19,7 @@ protected:
 
 	/*Variables*/
 	int power;
-	int life;
+	int lives;
 
 	/*Model Creator*/
 	ModelsCreator* localModelsCreator;
