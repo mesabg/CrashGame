@@ -23,7 +23,7 @@ Model::Model(ModelRoutesData* routes) {
 	this->sound = new Sound(routes->sounds);
 
 	/*Init Uniforms ID*/
-	this->ID = new vector<GLint>(8, 0);
+	this->ID = new vector<GLint>(10, 0);
 
 	/*Init Tranformation*/
 	this->transformation = new Transformation();
@@ -57,6 +57,9 @@ void Model::render(GLuint shader_id){
 	this->ID->at(4) = glGetUniformLocation(shader_id, "u_modelMat");
 	glUniformMatrix4fv(this->ID->at(4), 1, GL_FALSE, &(this->transformation->getTransformMatrix())[0][0]);
 
+	this->ID->at(5) = glGetUniformLocation(shader_id, "ourTexture");
+	glUniform1i(this->ID->at(5), 0);
+
 	/*this->ID->at(4) = glGetUniformLocation(shader_id, "u_TInverse_Mat");
 	glUniformMatrix4fv(this->ID->at(4), 1, GL_FALSE, glm::value_ptr(this->transformation->getTraslationInverseMatrix()));
 
@@ -73,7 +76,7 @@ void Model::render(GLuint shader_id){
 	/*Revisar http://pastebin.com/1BZJMG0V*/
 	glEnable(GL_TEXTURE_2D);
 	glBindBufferARB(GL_ARRAY_BUFFER_ARB, this->glVBO_dir);
-	glBindTexture(GL_TEXTURE_2D, this->texture->getID());
+	//glBindTexture(GL_TEXTURE_2D, this->texture->getID());
 	  
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->glVBO_indexes_dir);
 
@@ -81,30 +84,37 @@ void Model::render(GLuint shader_id){
 	glEnableVertexAttribArrayARB(0);
 	glVertexAttribPointerARB(0, 3, GL_FLOAT, GL_FALSE, 9*sizeof(GLfloat), 0 );
 
-	/*Normals*/
-	glEnableVertexAttribArrayARB(1);
-	glVertexAttribPointerARB(1, 3, GL_FLOAT, GL_FALSE, 9*sizeof(GLfloat), (void*)(6*sizeof(GLfloat)) );
-
 	/*Texture Coord*/
 	glEnableVertexAttribArrayARB(2);
 	glVertexAttribPointerARB(2, 3, GL_FLOAT, GL_FALSE, 9*sizeof(GLfloat), (void*)(3*sizeof(GLfloat)) );
 
+	/*Normals*/
+	glEnableVertexAttribArrayARB(1);
+	glVertexAttribPointerARB(1, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(GLfloat), (void*)(6 * sizeof(GLfloat)));
+
 	/*http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-9-vbo-indexing/*/
 
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+	/*glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);*/
 
-	glActiveTexture(GL_TEXTURE0);
-	glUniform1i(this->texture->getID(), 0);
+	//glActiveTexture(GL_TEXTURE0);
+	//glUniform1i(this->texture->getID(), 0);
+	glBindTexture(GL_TEXTURE_2D, this->texture->getID());
+	glUniform1i(glGetUniformLocation(shader_id, "ourTexture"), 0);
 
+	/*glActiveTexture(GL_TEXTURE0);
+	cout << this->texture->getID() << endl;
+	system("pause");*/
+	//glBindTexture(GL_TEXTURE_2D, this->texture->getID());
+	//glBindSampler(0, this->texture->getID());
 
 	//glDrawArrays(GL_TRIANGLES, 0, 3);
 	glDrawElements(GL_TRIANGLES, this->glVBO_indexes_size, GL_UNSIGNED_INT, (void*)0);
 	//glDrawArrays(GL_TRIANGLES, 0, 3);
 
-	
+	//glBindBuffer(GL_TEXTURE_2D, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	
 	//glBindBufferARB(GL_ARRAY_BUFFER_ARB, 2);

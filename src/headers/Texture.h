@@ -13,6 +13,7 @@
 #include <soil\SOIL.h>
 #include <iostream>
 #include <stdio.h>
+#define SDL_MAIN_HANDLED
 #include <sdl2\SDL.h>
 #include <sdl2\SDL_image.h>
 

@@ -67,6 +67,9 @@ void main(void)
 
    // combination of all components and diffuse color of the object
    //resultingColor.xyz = vec3(texture2D(ourTexture ,vec2(texture.x,texture.y))) * (Iamb + Idif + Ispe) ;
-   resultingColor.xyz = Iamb + Idif + Ispe;
-   resultingColor.a = 1.0;
+
+   //resultingColor.xyz = Iamb + Idif + Ispe;
+   resultingColor = texture2D(ourTexture, vec2(texture.x,texture.y));
+   //resultingColor.xyz = texture;
+   //resultingColor.a = 1.0
 } 

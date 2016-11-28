@@ -1,23 +1,27 @@
 #include <Texture.h>
 #include <iostream>
+
 Texture::Texture(string route){
 	this->route = route;	
-	glEnable(GL_TEXTURE_2D);
-	glGenTextures(1, &m_texture);
-	glBindTexture(GL_TEXTURE_2D , m_texture);	
-	
-	/*unsigned char* image = SOIL_load_image(route.c_str(), &width, &height, NULL, 0);
-	if (image == NULL)
-		cout << "Texture error :(" << endl;*/
 	SDL_Surface* temporal = loadImage(route.c_str(), true);
+	
+
+	glEnable(GL_TEXTURE_2D);
+	glGenTextures(1, &(this->m_texture));
+	glBindTexture(GL_TEXTURE_2D , this->m_texture);	
+
+	//glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECR);
+	//cout << temporal->w << endl << temporal->h << endl;
+
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, temporal->w, temporal->h, 0, GL_BGR, GL_UNSIGNED_BYTE, temporal->pixels);
 
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, temporal->w, temporal->h, 0, GL_RGB, GL_UNSIGNED_BYTE, temporal->pixels);
-	glGenerateMipmap(GL_TEXTURE_2D);
+	//gluBuild2DMipmaps(GL_TEXTURE_2D, 4, temporal->w, temporal->h, GL_RGBA, GL_UNSIGNED_BYTE, temporal->pixels);
+	//glGenerateMipmap(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, 0);
 	
 }
@@ -26,10 +30,13 @@ SDL_Surface* Texture::loadImage (const char *filename, bool alpha = true) {
 	SDL_Surface* loadedImage = NULL;
 	loadedImage = IMG_Load(filename);
 
-	if (loadedImage != NULL) {
-		cout << "ERROR CONVIVE" << endl;
-	}
-	return loadedImage;
+	SDL_PixelFormat form = { NULL,NULL,4,0,0,0,0,8,8,8,8,0xff000000,0x00ff0000,0x0000ff00,0x000000ff,0,255 };
+	SDL_Surface* img2 = SDL_ConvertSurface(loadedImage, &form, SDL_SWSURFACE);
+
+	if (!loadedImage) printf("IMG_Load: %s\n", IMG_GetError());
+	if (!img2) printf("SDL_ConvertSurface: %s\n", IMG_GetError());
+
+	return img2;
 }
 /*int Texture::LoadTexture(const char *filename, int alpha)
 {
